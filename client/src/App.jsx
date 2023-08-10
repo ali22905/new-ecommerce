@@ -4,6 +4,8 @@ function App() {
   return (
     <>
       <h1>I am ali</h1>
+      <h1>I am ali</h1>
+      <h1>I am ali</h1>
     </>
   )
 }
