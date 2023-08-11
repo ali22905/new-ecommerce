@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 // Routers
 import productsRoutes from "./routes/productsRoutes.js";
 import usersRoutes from "./routes/usersRoutes.js";
+import ordersRoutes from "./routes/ordersRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 
 
@@ -35,6 +36,7 @@ app.use(express.json());
 app.use(cors())
 app.use("/products", productsRoutes);
 app.use("/users", usersRoutes);
+app.use("/orders", ordersRoutes);
 app.use("/auth", authRoutes);
 
 

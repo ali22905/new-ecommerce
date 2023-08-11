@@ -9,7 +9,7 @@ const UserSchema = new mongoose.Schema(
     password: { type: String, required: true },
     address: { type: String, default: '' },
     isAdmin: { type: Boolean, default: false },
-    // there will be a button to choose 2 same products with different colors
+    // there will be a button to choose 2 same products with different colors isA
     cart: [{
       productId: { type: String },
       color: { type: String },
@@ -17,6 +17,7 @@ const UserSchema = new mongoose.Schema(
       quantity: { type: String, default: 1 },
     }],
     favs: { type: [String] }, //favorites
+    orders: { type: Array, default: [] },
   },
   { timestamps: true }
 );

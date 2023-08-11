@@ -2,8 +2,14 @@ import express from "express";
 import { 
   getUser,
   getUsers,
-  register,
+  deleteUser,
+  updateUser,
 } from "../controllers/usersCont.js";
+import { 
+  verifyToken,
+  verifyTokenAndAuthorization,
+  verifyTokenAndAdmin,
+} from "../controllers/verifyToken.js";
 
 const router = express.Router();
 
@@ -17,16 +23,15 @@ const router = express.Router();
 
 
 /* READ */ 
-router.get('/:id', getUser)
-router.get('/', getUsers)
-
-/* CREATE */ 
-router.post('/', register)
+router.get('/:id', verifyTokenAndAuthorization, getUser) // GET one user (current page user or admin)
+router.get('/', verifyTokenAndAdmin, getUsers) // GET all users (admin only)
 
 
 /* DELETE */ 
+router.delete('/:id', verifyTokenAndAuthorization, deleteUser)
 
 /* UPDATE */
+router.put('/:id', verifyTokenAndAuthorization, updateUser)
 
 
 
