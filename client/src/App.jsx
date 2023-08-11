@@ -1,9 +1,9 @@
-
+import Home from './pages/Home'
 
 function App() {
   return (
     <>
-      <h1>I am ali</h1>
+      <Home/>
     </>
   )
 }
