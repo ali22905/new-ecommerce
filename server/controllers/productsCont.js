@@ -8,6 +8,7 @@ export const getProducts = async (req, res, next) => {
   const newQ = req.query.new
   const searchQ = req.query.search
   const popularQ = req.query.popular
+  const soldQ = req.query.sold
 
   try {
     let products;
@@ -22,6 +23,8 @@ export const getProducts = async (req, res, next) => {
       products = await Product.find().sort({ createdAt: -1 });
     }else if (popularQ) {
       products = await Product.find().sort({ views: -1 });
+    }else if (soldQ) {
+      products = await Product.find().sort({ sold: -1 });
     }else{
       products = await Product.find()
     }
