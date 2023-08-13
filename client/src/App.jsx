@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import { useSelector } from "react-redux";
 /* components */
-import Home from './pages/Home'
-import NavBar from './components/NavBar'
+import Home from './pages/home/Home'
+import NavBar from './components/navBar/NavBar'
 
 
 function App() {
