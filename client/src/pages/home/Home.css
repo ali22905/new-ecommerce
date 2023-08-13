@@ -1,0 +1,135 @@
+.landingContainer{
+  height: 65vh ;
+  overflow: hidden;
+  position: relative;
+  /* background-color: #efefef; */
+  background-color: #f2f2f2;
+  width: 100%;
+  display: block;
+}
+
+
+
+.movingImage {
+  position: absolute;
+  /* max-width: 450px; */
+  top: 24px;
+  left: 19%;
+}
+
+
+.text1{
+    font-family: 'Kanit', sans-serif !important;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 90px 100px 0 0;
+}
+.text1 h1{
+  font-size: 5em;
+  margin: auto;
+  letter-spacing: 5px;
+  color: #232323;
+}
+.text1 h1 span{
+position: relative;
+}
+
+.shopBtn{
+  top: 162px;
+  width: fit-content;
+  padding: 10px 20px !important;
+  right: -67%;
+}
+
+
+
+/* for button  */
+.btn {
+  position: absolute;
+  bottom: 12%;
+  right: 6%;
+  border: none;
+  width: 15em;
+  height: 5em;
+  border-radius: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  background: #232323;
+  cursor: pointer;
+  transition: all 450ms ease-in-out;
+}
+
+.sparkle {
+  fill: #AAAAAA;
+  transition: all 800ms ease;
+}
+
+.text {
+  font-weight: 600;
+  color: #AAAAAA;
+  font-size: medium;
+}
+
+.btn:hover {
+  background: linear-gradient(0deg,#8555e6,#5026da);
+  box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+  0px 0px 30px 0px #5026da;
+  transform: translateY(-2px);
+}
+
+.btn:hover .text {
+  color: white;
+}
+
+.btn:hover .sparkle {
+  fill: white;
+  transform: scale(1.2);
+} 
+
+
+
+
+
+
+
+
+
+/* Home media  */
+
+@media (max-width: 992px){
+  .movingImage {
+    max-width: 415px;
+  }
+  .text1 h1{
+    font-size: 3.5em;
+  }
+  .btn {
+    bottom: 12%;
+    right: 6%;
+    width: 12em;
+    height: 3.5em;
+    border-radius: 3em;
+    gap: 10px;
+  }
+}
+@media (max-width: 768px){
+  .movingImage {
+    max-width: 375px;
+  }
+  .text1 h1{
+    font-size: 3em;
+  }
+  .btn {
+    bottom: 9%;
+    right: 9%;
+    width: 12em;
+    height: 3.5em;
+    border-radius: 3em;
+    gap: 10px;
+  }
+}
