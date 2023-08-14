@@ -1,9 +1,15 @@
+/* LIBS */ 
+import { Link } from "react-router-dom";
+/* COMPONENTS */ 
 import ProductsCont from "../../components/ProductsCont";
-import Container from "@mui/material/Container";
 import "./Home.css";
+/* MUI */ 
+import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+
 const Home = () => {
   return (
     <>
@@ -38,6 +44,12 @@ const Home = () => {
 
       <hr />
       <hr />
+      <br />
+      <br />
+      <div>
+        <Link to="signin">signin</Link>
+        <Link to="login">login</Link>
+      </div>
       <br />
       <br />
       <div className="recent-products">
