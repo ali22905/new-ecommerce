@@ -1,12 +1,15 @@
+// import area
 import ProductsCont from "../../components/ProductsCont";
-import Container from "@mui/material/Container";
+import ImageSlider from "../../components/imageSlider/ImageSlider"
 import "./Home.css";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+
+
 const Home = () => {
+
+
   return (
     <>
+      {/* start landing section  */}
       <container className="landingContainer">
         <img
           src="/assets/model-transparent-backGround-transformed.png"
@@ -35,9 +38,20 @@ const Home = () => {
           <span class="text">Shop Now</span>
         </button>
       </container>
+      {/* end landing section */}
 
-      <hr />
-      <hr />
+
+
+
+
+    {/* start recently added  */}
+    <ImageSlider />
+    {/* end recently added  */}
+
+
+
+
+
       <br />
       <br />
       <div className="recent-products">

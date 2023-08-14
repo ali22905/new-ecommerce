@@ -91,6 +91,13 @@ position: relative;
   transform: scale(1.2);
 } 
 
+.splide__pagination__page:hover{
+  background-color: #232323 !important;
+}
+.splide__pagination .is-active{
+  background-color: #232323 !important;
+}
+
 
 
 
