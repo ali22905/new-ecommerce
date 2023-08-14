@@ -1,7 +1,13 @@
+/* LIBS */ 
+import { Link } from "react-router-dom";
+/* COMPONENTS */ 
 // import area
 import ProductsCont from "../../components/ProductsCont";
-import ImageSlider from "../../components/imageSlider/ImageSlider"
 import "./Home.css";
+/* MUI */ 
+import ImageSlider from "../../components/imageSlider/ImageSlider"
+
+
 
 
 const Home = () => {
@@ -53,6 +59,12 @@ const Home = () => {
 
 
 
+      <br />
+      <br />
+      <div>
+        <Link to="signin">signin</Link>
+        <Link to="login">login</Link>
+      </div>
       <br />
       <br />
       <div className="recent-products">

@@ -1,8 +1,8 @@
 
 
-const ProductCard = ({ title, desc, price, createdAt }) => {
+const ProductCard = ({ title, desc, price, createdAt, key }) => {
   return (
-    <div style={{backgroundColor: '#dedede'}} className="product-card">
+    <div key={key} style={{backgroundColor: '#dedede'}} className="product-card">
       <h4>title: {title}</h4>
       <p>{desc}</p>
       <span>{price}</span>

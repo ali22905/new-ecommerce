@@ -9,25 +9,28 @@ export const getProducts = async (req, res, next) => {
   const searchQ = req.query.search
   const popularQ = req.query.popular
   const soldQ = req.query.sold
+  const sizeTypeQ = req.query.sizeType
 
   try {
-    let products;
-
-    if(searchQ && newQ){
-      products = await Product.find({ title: { $regex: searchQ, $options: 'i' } }).sort({ createdAt: -1 });
-    } else if(searchQ && popularQ){
-      products = await Product.find({ title: { $regex: searchQ, $options: 'i' } }).sort({ views: -1 });
-    } else if (searchQ) {
-      products = await Product.find({ title: { $regex: searchQ, $options: 'i' } }).sort({ createdAt: 1 });
-    } else if (newQ) {
-      products = await Product.find().sort({ createdAt: -1 });
-    }else if (popularQ) {
-      products = await Product.find().sort({ views: -1 });
-    }else if (soldQ) {
-      products = await Product.find().sort({ sold: -1 });
-    }else{
-      products = await Product.find()
+    let productsQuery = {}
+    console.log(productsQuery)
+    if(searchQ) {
+      productsQuery.title = { $regex: searchQ, $options: 'i' };
     }
+    if (sizeTypeQ && ['men', 'women', 'kids'].includes(sizeTypeQ)) {
+      productsQuery.sizeType = sizeTypeQ;
+    }
+
+    let sortQuery = {}
+    if (newQ) {
+      sortQuery.createdAt = -1;
+    } else if (popularQ) {
+      sortQuery.views = -1;
+    } else if (soldQ) {
+      sortQuery.sold = -1;
+    }
+
+    const products = await Product.find(productsQuery).sort(sortQuery);
 
     res.status(200).json(products);
   } catch (error) {

@@ -3,27 +3,17 @@ import { useEffect, useState } from 'react';
 import ProductCard from './ProductCard';
 
 
-
-
-// {popularProducts.length > 0 ? 
-//   (popularProducts.map(product => (
-//     <div className="product-card">
-//       <h4>title: {product.title}</h4>
-//       <p>{product.desc}</p>
-//       <span>{product.price}</span>
-//     </div>
-//     )))
-//   : (<h3>no popular products now</h3>)}
-
 const ProductsCont = ({ query }) => {
   const [products, setProducts] = useState([]);
   const API_LINK = import.meta.env.VITE_API_KEY
+  const [filter, setFilter] = useState('all');
 
   useEffect(() => {
     if (query) {
       axios.get(`${API_LINK}/products`, {
         params: {
           [query]: true,
+          'sizeType': filter
         }
       })
       .then(res => {
@@ -41,16 +31,28 @@ const ProductsCont = ({ query }) => {
         console.log('error fetching recent added products', err)
       })
     }
-  }, []); //eslint-disable-line
+  }, [filter, query]); //eslint-disable-line
   return (
     <div>
       {products.length > 0 ? 
-        (products.map(product => (
+        (
           <>
-            <ProductCard title={product.title} price={product.price} desc={product.desc} createdAt={product.createdAt} />
-            <br></br>
+            <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}} className='products-slider-filters'>
+              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('women')}}>women {filter === 'women' && 'active'}</h4>
+              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('men')}}>men {filter === 'men' && 'active'}</h4>
+              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('kids')}}>kids {filter === 'kids' && 'active'}</h4>
+              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('all')}}>All {filter === 'all' && 'active'}</h4>
+              <br />
+              <br />
+            </div>
+            {products.map(product => (
+              <div style={{marginInline: '70px'}}>
+                <ProductCard key={product._id} title={product.title} price={product.price} desc={product.desc} createdAt={product.createdAt} />
+                <br></br>
+              </div>
+              ))}
           </>
-          )))
+        )
         : (<h3>no products now</h3>)}
     </div>
   )
