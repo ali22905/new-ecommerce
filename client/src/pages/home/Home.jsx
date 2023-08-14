@@ -44,6 +44,7 @@ const Home = () => {
 
 
 
+
     {/* start recently added  */}
     <ImageSlider />
     {/* end recently added  */}
