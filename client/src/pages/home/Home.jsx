@@ -1,18 +1,21 @@
 /* LIBS */ 
 import { Link } from "react-router-dom";
 /* COMPONENTS */ 
+// import area
 import ProductsCont from "../../components/ProductsCont";
 import "./Home.css";
 /* MUI */ 
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ImageSlider from "../../components/imageSlider/ImageSlider"
+
+
 
 
 const Home = () => {
+
+
   return (
     <>
+      {/* start landing section  */}
       <container className="landingContainer">
         <img
           src="/assets/model-transparent-backGround-transformed.png"
@@ -41,9 +44,20 @@ const Home = () => {
           <span class="text">Shop Now</span>
         </button>
       </container>
+      {/* end landing section */}
 
-      <hr />
-      <hr />
+
+
+
+
+    {/* start recently added  */}
+    <ImageSlider />
+    {/* end recently added  */}
+
+
+
+
+
       <br />
       <br />
       <div>
