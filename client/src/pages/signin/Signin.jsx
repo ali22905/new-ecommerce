@@ -9,14 +9,16 @@ const Signin = () => {
   const API_KEY = import.meta.env.VITE_API_KEY
   const dispatch = useDispatch()
   const navigate = useNavigate()
+  const [foundUser, setFoundUser] = useState(true);
   const [data, setData] = useState({
-    firstName: '',
+    firstName : '',
     lastName: '',
     email: '',
     password: '',
     phone: '',
     address: '',
   });
+  console.log(data)
 
   const handleChange = (e) => {
     console.log(e.target.value)
@@ -52,6 +54,7 @@ const Signin = () => {
 
   return (
     <div style={{marginTop: '100px', marginInline: '50px'}}>
+      <h1>{signType === 'register' ? 'Register' : 'Login'}</h1>
       <form>
         {signType === 'register' ? (
           <>
@@ -67,6 +70,7 @@ const Signin = () => {
             {/* <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' /> */}
             <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' />
             <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' />
+            {!foundUser && <h3>user not found</h3>}
           </>
         )}
         <button onClick={handleSubmit}>submit</button>

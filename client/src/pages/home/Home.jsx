@@ -4,9 +4,6 @@ import { Link } from "react-router-dom";
 // import area
 import ProductsCont from "../../components/ProductsCont";
 import "./Home.css";
-/* MUI */ 
-import ImageSlider from "../../components/imageSlider/ImageSlider"
-
 
 
 
@@ -50,8 +47,9 @@ const Home = () => {
 
 
 
+
     {/* start recently added  */}
-    <ImageSlider />
+    {/* <ImageSlider /> */}
     {/* end recently added  */}
 
 
@@ -87,10 +85,7 @@ const Home = () => {
       <br />
       <hr />
       <br />
-      <div className="all-products">
-        <h2>all</h2>
-        <ProductsCont />
-      </div>
+
     </>
   );
 };
