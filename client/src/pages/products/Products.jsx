@@ -46,7 +46,7 @@ const Products = ({ searchQuery }) => {
       : <h1 style={{marginBlock: '50px'}}>Products</h1>}
       <div style={{margin: '50px'}} className="sorts">
         <button onClick={()=> setQuery('new')} style={{backgroundColor: query==='new' && '#aaeeee'}}>newest</button>
-        <button onClick={()=> setQuery('old')} style={{backgroundColor: query==='oldest' && '#aaeeee'}}>oldest</button>
+        <button onClick={()=> setQuery('old')} style={{backgroundColor: query==='old' && '#aaeeee'}}>oldest</button>
         <button onClick={()=> setQuery('popular')} style={{backgroundColor: query==='popular' && '#aaeeee'}}>most popular</button>
         <button onClick={()=> setQuery('sold')} style={{backgroundColor: query==='sold' && '#aaeeee'}}>most selled</button>
       </div>
@@ -58,7 +58,12 @@ const Products = ({ searchQuery }) => {
               {['tshirt', 'pants', 'shoes'].map(type => (
                 <li 
                 key={type}
-                onClick={()=> setFilters(prev => {return {...prev, type,}})}
+                onClick={()=> setFilters(prev => {
+                  return {
+                    ...prev, 
+                    type: prev.type===type ? '' : type,
+                  }
+                })}
                 style={{
                   margin: '15px',
                   cursor: 'pointer',
@@ -66,7 +71,6 @@ const Products = ({ searchQuery }) => {
                 }}>{type}</li>
               ))}
             </ul>
-            <button onClick={()=> setFilters(prev=> {return {...prev, type:''}})} >All types</button>
           </div>
           <div style={{marginTop: '30px'}} className="gender-filter-block">
             <h3>gender</h3>
@@ -74,7 +78,12 @@ const Products = ({ searchQuery }) => {
               {['male', 'female'].map(gender => (
                 <li 
                 key={gender}
-                onClick={()=> setFilters(prev => {return {...prev, gender,}})}
+                onClick={()=> setFilters(prev => {
+                  return {
+                    ...prev,
+                    gender: prev.gender===gender ? '' : gender,
+                  }
+                })}
                 style={{
                   margin: '15px',
                   cursor: 'pointer',
@@ -82,7 +91,6 @@ const Products = ({ searchQuery }) => {
                 }}>{gender}</li>
               ))}
             </ul>
-            <button onClick={()=> setFilters(prev=> {return {...prev, gender:''}})} >All genders</button>
           </div>
           <div style={{marginTop: '30px'}} className="sizes-filter-block">
             <h3>sizes</h3>
@@ -104,7 +112,6 @@ const Products = ({ searchQuery }) => {
                 }}>{size}</button>
               ))}
             </ul>
-            <button onClick={()=> setFilters(prev=> {return {...prev, sizes:[]}})} >All sizes</button>
           </div>
         </div>
         <div className="cards" style={{width: '70%', display: 'flex', maxWidth: '70%', flexWrap: 'wrap',}}>
