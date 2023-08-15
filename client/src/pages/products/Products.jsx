@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import ProductCard from '../../components/ProductCard'
 
 
-const Products = () => {
+const Products = ({ searchQuery }) => {
   const [products, setProducts] = useState([]);
   const [query, setQuery] = useState('popular');
   const [filters, setFilters] = useState({
@@ -12,7 +12,6 @@ const Products = () => {
     sizes: [],
   });
   const API_LINK = import.meta.env.VITE_API_KEY
-  console.log(filters)
 
   useEffect(() => {
     if (query) {
@@ -20,6 +19,7 @@ const Products = () => {
         params: {
           [query]: true,
           ...filters,
+          'search': searchQuery,
         }
       })
       .then(res => {
@@ -37,11 +37,13 @@ const Products = () => {
         console.log('error fetching recent added products', err)
       })
     }
-  }, [filters, query]); //eslint-disable-line
+  }, [filters, query, searchQuery]); //eslint-disable-line
 
   return (
     <div className="products">
-      <h1 style={{marginBlock: '50px'}}>Products</h1>
+      {searchQuery 
+      ? <h1 style={{marginBlock: '50px'}}>search: <span style={{color: 'blue'}}>{searchQuery}</span></h1> 
+      : <h1 style={{marginBlock: '50px'}}>Products</h1>}
       <div style={{margin: '50px'}} className="sorts">
         <button onClick={()=> setQuery('new')} style={{backgroundColor: query==='new' && '#aaeeee'}}>newest</button>
         <button onClick={()=> setQuery('old')} style={{backgroundColor: query==='oldest' && '#aaeeee'}}>oldest</button>
