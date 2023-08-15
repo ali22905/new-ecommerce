@@ -32,7 +32,7 @@ export const login = async (req, res, next) => {
       }
     );
 
-    !user && res.status(401).json("User not found");
+    !user && res.status(404).json("User not found");
 
     const hashedPassword = CryptoJS.AES.decrypt(
         user.password,

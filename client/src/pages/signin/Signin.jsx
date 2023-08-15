@@ -10,6 +10,10 @@ const Signin = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const [foundUser, setFoundUser] = useState(true);
+  const [wrongPass, setWrongPass] = useState(false);
+  const [isEmptyField, setIsEmptyField] = useState(false);
+  const [isUnvalidPass, setIsUnvalidPass] = useState(false);
+  const [unvalidEmail, setUnvalidEmail] = useState(false);
   const [data, setData] = useState({
     firstName : '',
     lastName: '',
@@ -18,25 +22,34 @@ const Signin = () => {
     phone: '',
     address: '',
   });
-  console.log(data)
 
   const handleChange = (e) => {
-    console.log(e.target.value)
     setData((perv) => {
       return {...perv, [e.target.name]: e.target.value}
     })
   }
-  console.log(data)
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
     if (signType === 'register') {
-      try {
-        const user = await axios.post(`${API_KEY}/auth/register`, data)
-        setSignType('login')
-      } catch (error) {
-        console.log('Error while logging in', error)
+      // validate form
+      if (data.email === '' | data.password === '' | data.firstName === '' || data.lastName === '' || data.phone === '') {
+        setIsEmptyField(true)
+      }else {
+        setIsEmptyField(false)
+      }
+      data.password.length < 4 ? setIsUnvalidPass(true) : setIsUnvalidPass(false)
+      !data.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) ? setUnvalidEmail(true) : setUnvalidEmail(false)
+
+      if (!isEmptyField && !isUnvalidPass && !unvalidEmail) {
+        try {
+          const user = await axios.post(`${API_KEY}/auth/register`, data)
+          setSignType('login')
+        } catch (error) {
+          console.log('Error while logging in', error)
+        }
       }
     }else {
       try {
@@ -47,6 +60,8 @@ const Signin = () => {
         dispatch(login(user))
         navigate('/')
       } catch (error) {
+        error.response.status === 404 ? setFoundUser(false) : setFoundUser(true)
+        error.response.status === 401 ? setWrongPass(true) : setWrongPass(false)
         console.log('Error while logging in', error)
       }
     }
@@ -58,19 +73,24 @@ const Signin = () => {
       <form>
         {signType === 'register' ? (
           <>
-            <input value={data.firstName} name="firstName" onChange={handleChange} type="text" placeholder='firstName' />
-            <input value={data.lastName} name="lastName" onChange={handleChange} type="text" placeholder='lastName' />
-            <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' />
-            <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' />
-            <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' />
-            <input value={data.address} name="address" onChange={handleChange} type="text" placeholder='address' />
+            <input value={data.firstName} name="firstName" onChange={handleChange} type="text" placeholder='firstName' required />
+            <input value={data.lastName} name="lastName" onChange={handleChange} type="text" placeholder='lastName' required />
+            <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' required />
+            <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' required />
+            <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' required />
+            <input value={data.address} name="address" onChange={handleChange} type="text" placeholder='address' required />
+            {isUnvalidPass && <p>password must be greater than 3 letters</p>}
+            {isEmptyField && <p>all fileds are required ecxept the address</p>}
+            {unvalidEmail && <p>unvalid email</p>}
           </>
         ) : (
           <>
             {/* <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' /> */}
-            <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' />
-            <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' />
-            {!foundUser && <h3>user not found</h3>}
+            <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' required />
+            <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' required />
+
+            {!foundUser && <p>user not found</p>}
+            {wrongPass && <p>wrong password</p>}
           </>
         )}
         <button onClick={handleSubmit}>submit</button>
