@@ -1,12 +1,30 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContent, useContext } from 'react';
 import ProductCard from './ProductCard';
+import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
+import "react-horizontal-scrolling-menu/dist/styles.css";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 
 const ProductsCont = ({ query }) => {
   const [products, setProducts] = useState([]);
   const API_LINK = import.meta.env.VITE_API_KEY
   const [filter, setFilter] = useState('all');
+  const [selected, setSelected] = useState([]);
+  const [position, setPosition] = useState(0);
+  const visibility = useContext(VisibilityContext);
+
+  const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+  const handleClick = (id) => ({ getItemById, scrollToItem }) => {
+    const itemSelected = isItemSelected(id);
+
+    setSelected((currentSelected) =>
+      itemSelected
+        ? currentSelected.filter((el) => el !== id)
+        : currentSelected.concat(id)
+  );};
 
   useEffect(() => {
     if (query) {
@@ -36,26 +54,97 @@ const ProductsCont = ({ query }) => {
     <div>
       {products.length > 0 ? 
         (
-          <>
-            <div style={{display: 'flex', justifyContent: 'space-between', width: '100%'}} className='products-slider-filters'>
-              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('women')}}>women {filter === 'women' && 'active'}</h4>
-              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('men')}}>men {filter === 'men' && 'active'}</h4>
-              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('kids')}}>kids {filter === 'kids' && 'active'}</h4>
-              <h4 style={{cursor: 'pointer'}} onClick={() => {setFilter('all')}}>All {filter === 'all' && 'active'}</h4>
-              <br />
-              <br />
+          <div className="recently-added">
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                width: "100%",
+              }}
+              className="products-slider-filters container"
+            >
+              <button 
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setFilter("women");
+                }}
+                className={`${filter === "women" && "active1"} animated-button` }>
+                <span>women</span>
+                <span></span>
+              </button>
+              <button 
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setFilter("men");
+                }}
+                className={`${filter === "men" && "active1"} animated-button` }>
+                <span>men</span>
+                <span></span>
+              </button>
+              <button 
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setFilter("kids");
+                }}
+                className={`${filter === "kids" && "active1"} animated-button` }>
+                <span>kids</span>
+                <span></span>
+              </button>
+              <button 
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  setFilter("all");
+                }}
+                className={`${filter === "all" && "active1"} animated-button` }>
+              <span>All</span>
+              <span></span>
+              </button>
             </div>
-            {products.map(product => (
-              <div style={{marginInline: '70px'}}>
-                <ProductCard key={product._id} title={product.title} price={product.price} desc={product.desc} createdAt={product.createdAt} />
-                <br></br>
-              </div>
+            <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+              {products.map(product => (
+                <ProductCard
+                  itemId={product._id} // NOTE: itemId is required for track items
+                  title={product.title}
+                  key={product._id}
+                  price={product.price}
+                  createdAt={product.createdAt}
+                  onClick={handleClick(product._id)}
+                  selected={isItemSelected(product._id)}
+                  visibility={visibility}
+                />
               ))}
-          </>
+            </ScrollMenu>
+          </div>
         )
         : (<h3>no products now</h3>)}
     </div>
   )
+}
+
+function LeftArrow() {
+  const { isFirstItemVisible, scrollPrev } = useContext(VisibilityContext);
+
+  return (
+    <KeyboardArrowLeftIcon
+      disabled={isFirstItemVisible}
+      onClick={() => scrollPrev()}
+    >
+      
+    </KeyboardArrowLeftIcon>
+  );
+}
+
+function RightArrow() {
+  const { isLastItemVisible, scrollNext } = useContext(VisibilityContext);
+
+  return (
+    <KeyboardArrowRightIcon
+      disabled={isLastItemVisible}
+      onClick={() => scrollNext()}
+    >
+      Right
+    </KeyboardArrowRightIcon>
+  );
 }
 
 export default ProductsCont
