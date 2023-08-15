@@ -62,7 +62,7 @@ const Home = () => {
       <br />
       <div>
         <Link to="signin">signin</Link>
-        <Link to="login">login</Link>
+        <Link to="products" style={{marginLeft: '30px'}} >Products</Link>
       </div>
       <br />
       <br />
