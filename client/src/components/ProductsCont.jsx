@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { useEffect, useState, useContent, useContext } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import ProductCard from './ProductCard';
 import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
 import "react-horizontal-scrolling-menu/dist/styles.css";
@@ -12,7 +12,6 @@ const ProductsCont = ({ query }) => {
   const API_LINK = import.meta.env.VITE_API_KEY
   const [filter, setFilter] = useState('all');
   const [selected, setSelected] = useState([]);
-  const [position, setPosition] = useState(0);
   const visibility = useContext(VisibilityContext);
 
   const isItemSelected = (id) => !!selected.find((el) => el === id);
@@ -35,7 +34,7 @@ const ProductsCont = ({ query }) => {
         }
       })
       .then(res => {
-        setProducts(res.data)
+        setProducts(res.data.slice(0,7))
       })
       .catch(err => {
         console.log(`error fetching products with params "${query}:true"`, err)
@@ -101,18 +100,21 @@ const ProductsCont = ({ query }) => {
               </button>
             </div>
             <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-              {products.map(product => (
-                <ProductCard
-                  itemId={product._id} // NOTE: itemId is required for track items
-                  title={product.title}
-                  key={product._id}
-                  price={product.price}
-                  createdAt={product.createdAt}
-                  onClick={handleClick(product._id)}
-                  selected={isItemSelected(product._id)}
-                  visibility={visibility}
-                />
-              ))}
+              {products.length < 1 
+                ? (<h2>no products</h2>)
+                : products.map(product => (
+                    <ProductCard
+                      itemId={product._id} // NOTE: itemId is required for track items
+                      title={product.title}
+                      key={product._id}
+                      price={product.price}
+                      createdAt={product.createdAt}
+                      onClick={handleClick(product._id)}
+                      selected={isItemSelected(product._id)}
+                      visibility={visibility}
+                    />
+                  ))
+                }
             </ScrollMenu>
           </div>
         )

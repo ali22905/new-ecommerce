@@ -115,9 +115,12 @@ const Products = ({ searchQuery }) => {
           </div>
         </div>
         <div className="cards" style={{width: '70%', display: 'flex', maxWidth: '70%', flexWrap: 'wrap',}}>
-          {products.map(p => (
+        {products.length < 1 
+          ? (<h2>no products</h2>)
+          : products.map(p => (
             <ProductCard sizes={p.sizes} gender={p.gender} views={p.views} sold={p.sold} title={p.title} createdAt={p.createdAt} key={p._id} desc={p.desc} price={p.price} />
-          ))}
+          ))
+        }
         </div>
       </div>
     </div>
