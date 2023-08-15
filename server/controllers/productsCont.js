@@ -10,12 +10,23 @@ export const getProducts = async (req, res, next) => {
   const popularQ = req.query.popular
   const soldQ = req.query.sold
   const sizeTypeQ = req.query.sizeType
+  const typeQ = req.query.type
+  const genderQ = req.query.gender
+  const sizesQ = req.query.sizes
 
   try {
     let productsQuery = {}
-    console.log(productsQuery)
     if(searchQ) {
       productsQuery.title = { $regex: searchQ, $options: 'i' };
+    }
+    if(typeQ) {
+      productsQuery.type = typeQ;
+    }
+    if(genderQ) {
+      productsQuery.gender = [genderQ, 'unisex'];
+    }
+    if(sizesQ) {
+      productsQuery.sizes = { $in: sizesQ };
     }
     if (sizeTypeQ && ['men', 'women', 'kids'].includes(sizeTypeQ)) {
       productsQuery.sizeType = sizeTypeQ;

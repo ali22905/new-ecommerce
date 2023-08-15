@@ -35,7 +35,7 @@ const ProductsCont = ({ query }) => {
         }
       })
       .then(res => {
-        setProducts(res.data.slice(0, 4))
+        setProducts(res.data)
       })
       .catch(err => {
         console.log(`error fetching products with params "${query}:true"`, err)
@@ -43,7 +43,7 @@ const ProductsCont = ({ query }) => {
     }else {
       axios.get(`${API_LINK}/products`)
       .then(res => {
-        setProducts(res.data.slice(0, 4))
+        setProducts(res.data)
       })
       .catch(err => {
         console.log('error fetching recent added products', err)

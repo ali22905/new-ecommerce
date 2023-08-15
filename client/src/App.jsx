@@ -11,19 +11,22 @@ import { useSelector } from "react-redux";
 import NavBar from './components/navBar/NavBar'
 import Home from './pages/home/Home'
 import Signin from './pages/signin/Signin'
+import Products from './pages/products/Products'
 import NotFound from './pages/NotFound'
 
 
 function App() {
+  const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
   const { currentUser } = useSelector((state) => state.user);
 
   return (
     <main>
-      {location.pathname !== '/signin' && location.pathname !== '/register' && <NavBar />}
+      {location.pathname !== '/signin' && location.pathname !== '/register' && <NavBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />}
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/products" element={<Products searchQuery={searchQuery} />} />
         <Route path="/signin" element={ currentUser ? <Navigate to="/" /> : <Signin /> } />
         <Route path="*" element={<NotFound />} />
       </Routes>
