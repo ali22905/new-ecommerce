@@ -1,15 +1,15 @@
 
 
-const ProductCard = ({ title, desc, price, createdAt, key, visibility }) => {
+const ProductCard = ({ title, desc, price, createdAt, key, visibility, }) => {
   return (
-    <div style={{ marginInline: "70px" }}>
+    <div key={key} style={{ marginInline: "70px" }}>
       <div
         // onClick={() => onClick(visibility)}
         tabIndex={0}
       >
         <div className="card">
           <img src="/assets/MS4.jpg" alt="this is an img" />
-          <div key={key}  className="product-card">
+          <div  className="product-card">
             <h4
             style={{
               lineHeight: "1.2307692308",
