@@ -1,0 +1,130 @@
+.recently-added{
+  margin: 50px 0;
+}
+.recently-added-h1{
+  text-align: left;
+  margin-left: 15px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+  font-size: 20px;
+
+  font-family: 'Open Sans', sans-serif;  
+  font-weight: 600;
+  text-transform: none;
+  color: #232323;
+}
+
+
+
+
+.react-horizontal-scrolling-menu--inner-wrapper{
+  align-items: center;
+}
+
+.img-container{
+  height: 200px;
+  order: 1;
+  display: block;
+}
+
+
+.container{
+  display: flex;
+  justify-content: stretch !important;
+  width: 100%;
+  align-items: center;
+  margin: 20px 0;
+}
+
+
+
+
+/* type select buttons */
+.animated-button {
+  margin: 0 10px;
+  position: relative;
+  display: inline-block;
+  padding: 7px 20px;
+  border: none;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color: #292929 ;
+  /* box-shadow: 0 0 0 2px #ffffff20; */
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.animated-button span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #292929;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+  
+}
+
+.animated-button span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.animated-button:active {
+  scale: 0.95;
+}
+
+.animated-button:hover span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+
+.active1 span:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #292929;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.active1 span:first-child {
+  position: relative;
+  z-index: 1;
+}
+
+.active1 {
+  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2);
+  color: #ffffff;
+}
+
+.active1:active {
+  scale: 0.95;
+}
+
+.active1 span:last-child {
+  width: 150px;
+  height: 150px;
+  opacity: 1;
+}
+
+/* type select buttons */
+

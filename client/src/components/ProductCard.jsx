@@ -29,7 +29,11 @@ const ProductCard = ({ title, desc, price, createdAt, visibility, }) => {
               fontWeight: "bold",
               textTransform: "uppercase",
               margin: " 5px 0px",
-            }} >{price} EGP</span>
+            }} > <s style={{
+              color: "#292929",
+              fontSize: '13px',
+              fontWeight: 'normal'
+            }}>730 EGP</s> {price} EGP</span>
             <br />
             <span style={{
               lineHeight: "1.2307692308",
