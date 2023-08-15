@@ -57,7 +57,7 @@ const Signin = () => {
           email: data.email,
           password: data.password,
         })
-        dispatch(login(user))
+        dispatch(login(user.data))
         navigate('/')
       } catch (error) {
         error.response.status === 404 ? setFoundUser(false) : setFoundUser(true)

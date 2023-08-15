@@ -1,8 +1,8 @@
 
 
-const ProductCard = ({ title, desc, price, createdAt, key, visibility, }) => {
+const ProductCard = ({ title, desc, price, createdAt, visibility, }) => {
   return (
-    <div key={key} style={{ marginInline: "70px" }}>
+    <div style={{ marginInline: "70px" }}>
       <div
         // onClick={() => onClick(visibility)}
         tabIndex={0}
