@@ -3,6 +3,10 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/userReducer';
 import { useNavigate } from 'react-router';
+import './Signin.css'
+import SentimentVeryDissatisfiedOutlinedIcon from '@mui/icons-material/SentimentVeryDissatisfiedOutlined';
+import SentimentVerySatisfiedOutlinedIcon from '@mui/icons-material/SentimentVerySatisfiedOutlined';
+
 
 const Signin = () => {
   const [signType, setSignType] = useState('login');
@@ -67,37 +71,139 @@ const Signin = () => {
     }
   }
 
-  return (
-    <div style={{marginTop: '100px', marginInline: '50px'}}>
-      <h1>{signType === 'register' ? 'Register' : 'Login'}</h1>
-      <form>
-        {signType === 'register' ? (
-          <>
-            <input value={data.firstName} name="firstName" onChange={handleChange} type="text" placeholder='firstName' required />
-            <input value={data.lastName} name="lastName" onChange={handleChange} type="text" placeholder='lastName' required />
-            <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' required />
-            <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' required />
-            <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' required />
-            <input value={data.address} name="address" onChange={handleChange} type="text" placeholder='address' required />
-            {isUnvalidPass && <p>password must be greater than 3 letters</p>}
-            {isEmptyField && <p>all fileds are required ecxept the address</p>}
-            {unvalidEmail && <p>unvalid email</p>}
-          </>
-        ) : (
-          <>
-            {/* <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' /> */}
-            <input value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' required />
-            <input value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' required />
 
-            {!foundUser && <p>user not found</p>}
-            {wrongPass && <p>wrong password</p>}
-          </>
-        )}
-        <button onClick={handleSubmit}>submit</button>
-      </form>
-      {signType === 'register' ? (<button onClick={() => {setSignType('loign')}}>Already have account</button>) : (<button onClick={() => {setSignType('register')}}>Don't have an accoun?</button>)}
+  return (
+    <>
+
+      <>
+        {signType === 'register' ? (
+
+
+
+
+
+<div className="login">
+<div className="container"  style={{height: "95vh"}}>
+  <div className="image">
+    <img src="/assets/girl-illustration.png" alt="img" />
+    <div className="buttons">
+            {signType === 'register' ?
+              (<button className="bt1" onClick={() => {setSignType('loign')}} style={{bottom: "5%"}} >Already have an account</button>) : 
+              (<button className="bt1" onClick={() => {setSignType('register')}}>Create account</button>)
+              }
     </div>
+  </div>
+  <div className="text2">
+    <h1>Welcome!</h1>
+    <div className="inputs">
+    <input className="main-input" value={data.firstName} name="firstName" onChange={handleChange} type="text" placeholder='your first name' required />
+    <input className="main-input" value={data.lastName} name="lastName" onChange={handleChange} type="text" placeholder='your last name' required />
+    <input className="main-input" value={data.email} name="email" onChange={handleChange} type="email" placeholder='your email' required />
+    <input className="main-input" value={data.password} name="password" onChange={handleChange} type="text" placeholder='enter a password' required />
+    <input className="main-input" value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='your phone number' required />
+    <input className="main-input" value={data.address} name="address" onChange={handleChange} type="text" placeholder='your address' required />
+      <button className="bt2" onClick={handleSubmit}>submit</button>
+      <div className="p">
+        Can't wait to see your account in our website
+      </div>
+    </div>
+  </div>
+</div>
+<div className="d1" />
+<div className="d2" />
+      {isUnvalidPass && <div className='userNotFound'>
+        <div className="icon"><SentimentVeryDissatisfiedOutlinedIcon fontSize='medium' /></div>
+        <div className="errText">
+          <h4>There was a Problem</h4>
+          <p>password must be greater than 3 letters.</p>
+        </div>
+        </div>}
+      {isEmptyField && <div className='wrongPass'>
+        <div className="icon"><SentimentVeryDissatisfiedOutlinedIcon fontSize='medium' /></div>
+        <div className="errText">
+          <h4>There was a Problem</h4>
+          <p>all fileds are required except the address.</p>
+        </div>
+        </div>}
+      {unvalidEmail && <div className='wrongPass'>
+        <div className="icon"><SentimentVeryDissatisfiedOutlinedIcon fontSize='medium'/></div>
+        <div className="errText">
+          <h4>There was a Problem</h4>
+          <p>The e-mail you entered is unvalid.</p>
+        </div>
+        </div>}
+</div>
+
+
+
+
+
+
+
+
+
+        ) : (
+      <div className="login">
+        <div className="container">
+          <div className="image">
+            <img src="/assets/girl-illustration.png" alt="img" />
+            <div className="buttons">
+                    {signType === 'register' ? (<button className="bt1" onClick={() => {setSignType('loign')}}>Already have account</button>) : (<button className="bt1" onClick={() => {setSignType('register')}}>Create account</button>)}
+            </div>
+          </div>
+          <div className="text2">
+            <h1>Welcome!</h1>
+            <div className="inputs">
+            {/* <input value={data.phone} name="phone" onChange={handleChange} type="number" placeholder='phone' /> */}
+            <input className="main-input" value={data.email} name="email" onChange={handleChange} type="email" placeholder='email' required />
+            <input className="main-input" value={data.password} name="password" onChange={handleChange} type="text" placeholder='password' required />
+              <button className="bt2" onClick={handleSubmit}>submit</button>
+              <div className="p">
+                <p>Securely access your account with your email and password  </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="d1" />
+        <div className="d2" />
+              {!foundUser && <div className='userNotFound'>
+                <div className="icon"><SentimentVeryDissatisfiedOutlinedIcon fontSize='medium' /></div>
+                <div className="errText">
+                  <h4>There was a Problem</h4>
+                  <p>We couldn't find an account with that e-mail address.</p>
+                </div>
+                </div>}
+              {wrongPass && <div className='wrongPass'>
+                <div className="icon"><SentimentVeryDissatisfiedOutlinedIcon fontSize='medium' /></div>
+                <div className="errText">
+                  <h4>There was a Problem</h4>
+                  <p>The password you entered is incorrect.</p>
+                </div>
+                </div>}
+      </div>
+
+        )}
+
+      </>
+
+    </>
   )
 }
 
 export default Signin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

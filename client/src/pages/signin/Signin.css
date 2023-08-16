@@ -1,0 +1,330 @@
+.login {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Poppins, sans-serif;
+}
+
+.login .container {
+  height: 70vh;
+  width: 90%;
+  display: flex;
+  /* box-shadow: #000 0px 5px 15px; */
+  box-shadow:  15px 15px 30px #c3c3c3,
+            -15px -15px 30px #fdfdfd;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  align-items: center;
+}
+
+.login .container .image {
+  flex-basis: 50%;
+  text-align: center;
+}
+
+.login .container .image img {
+  width: 570px;
+}
+.login .container .image .bt1 {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: small;
+  padding: 17px 25px;
+  color: #232323;
+  border-radius: 52px;
+  border: none;
+  background-image: linear-gradient(to right, #ecc425 50%, #fc9226 100%);
+}
+
+.login .container .text2 {
+  color: #232323;
+  flex-direction: column;
+  display: flex;
+  flex: none;
+  flex-basis: 50%;
+  height: 100%;
+  justify-content: center;
+}
+
+.login .container .text2 .inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.login .container .text2 h1 {
+  margin: 65px 0 20px 0;
+  font-size: 50px;
+}
+
+.login .container .text2 input {
+  width: 430px;
+  padding: 15px;
+  margin: 10px auto;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+}
+
+.login .container .text2 input:focus {
+  outline: none;
+}
+
+.login .container .text2 input::placeholder {
+  font-size: smaller;
+  color: #777;
+}
+
+.login .container .text2 .p {
+  color: #777;
+  display: flex;
+  font-size: smaller;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+}
+
+.login .container .text2 .p div {
+  height: 5px;
+  width: 35px;
+  margin-left: 10px;
+  background-color: #ecc425;
+  border-radius: 30px;
+  border: 1px solid white;
+}
+
+.login .container .text2 .p div:last-of-type {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid white;
+  height: 6px;
+}
+
+.login .container .text2 .bt2 {
+  width: fit-content;
+  font-weight: bold;
+  margin: auto;
+  font-size: small;
+  padding: 10px 25px;
+  background-color: transparent;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  color: #232323;
+  border-radius: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: 0.4s;
+  z-index: 2;
+}
+
+.login .container .text2 .bt2:hover {
+  scale: 1.09;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.login .container .text2 .bt2:before {
+  content: "";
+  position: absolute;
+  background-image: linear-gradient(to right, #ecc425 50%, #fc9226 100%);
+  height: 113%;
+  width: 141%;
+  top: 33%;
+  transform: translate(-120%, -35%) translateZ(0);
+  transition: 0.3s;
+  z-index: -1;
+}
+
+.login .container .text2 .bt2:hover:before {
+  transform: translate(-45%, -34%) translateZ(0);
+}
+
+.login .d1 {
+  width: 270px;
+  height: 270px;
+  position: absolute;
+  top: -46px;
+  left: 88%;
+  border-radius: 50%;
+  z-index: -1;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.login .d2 {
+  width: 250px;
+  height: 250px;
+  padding: 111px;
+  position: absolute;
+  border: 35px solid #232323;
+  bottom: -53px;
+  left: -83px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+
+/* end sign in  */
+/* start regester  */
+
+/* end regester  */
+
+/* start error  */
+
+
+
+.userNotFound, 
+.wrongPass {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 18px 18px;
+  box-shadow: 0 0 0 4px #fcf4f4 inset;
+  border: 1px solid #c40000;
+  background-color: #fff;
+  border-radius: 22px;
+}
+.userNotFound h4, 
+.wrongPass h4{
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.255;
+  color: #c40000;
+  margin: 3px 0px;
+}
+.userNotFound p, 
+.wrongPass p {
+  font-size: 13px;
+  color: #222;
+}
+.userNotFound .icon, 
+.wrongPass .icon {
+  color: #c40000;
+  font-size: 15px;
+}
+
+
+
+
+
+
+
+
+/* end error  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Large */
+@media (max-width: 1500px) {
+  .login .container .image img {
+    width: 450px;
+  }
+}
+
+/* End global rules */
+@media (max-width: 1400px) {
+  .login .container .image img {
+    width: 460px;
+  }
+
+  .login .container .text2 input {
+    width: 320px;
+  }
+}
+
+@media (max-width: 1200px) {
+
+  /* .login .container .image img {
+    width: 300px;
+  } */
+}
+
+/* Medium */
+@media (max-width: 992px) {
+  .login .container .image {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .login .container .image img {
+    width: 380px;
+  }
+
+  .login .container .text2 {
+    width: 50%;
+  }
+
+  .login .container .text2 input {
+    width: 260px;
+  }
+}
+
+@media (max-width: 788px) {
+  .login {
+    width: 100%;
+  }
+
+  .login .container .image {
+    width: 50%;
+  }
+
+  .login .container .image img {
+    width: 322px;
+  }
+
+}
+
+@media (max-width: 680px) {
+  .login {
+    width: 100%;
+  }
+
+  .login .container {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background-image: none;
+  }
+
+  .login .container .image img {
+    display: none;
+  }
+
+  .login .container .image .bt1 {
+    position: absolute;
+    left: 50%;
+    bottom: 13%;
+    transform: translateX(-50%);
+  }
+
+  .login .container .text2 {
+    flex-basis: 100%;
+  }
+
+  .login .container .text2 .inputs {
+    margin: 0 auto;
+  }
+
+  .login .container .text2 h1 {
+    font-size: 45px;
+    margin: -45px 0 25px 0;
+  }
+}
