@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
+import { Link } from 'react-router-dom'
 
-const ProductCard = ({ title, desc, price, createdAt, key, visibility }) => {
+const ProductCard = ({ title, desc, price, createdAt, key, id }) => {
 
   return (
-    <div
-      key={key}
+    <Link
+      to={`/products/${id}`}
       style={{
         marginInline: "70px",
         cursor: "pointer",
@@ -81,7 +82,7 @@ const ProductCard = ({ title, desc, price, createdAt, key, visibility }) => {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

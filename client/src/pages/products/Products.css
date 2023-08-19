@@ -21,6 +21,14 @@
 .h3-drawer{
   font-size: 26px;
   margin-left: 7px;
+  cursor: pointer;
+
+}
+
+.h3-drawer .open{
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  transform: rotate(90deg);
+
 }
 
 .sizes-button{

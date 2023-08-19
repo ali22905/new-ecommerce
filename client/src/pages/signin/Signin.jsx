@@ -54,14 +54,14 @@ const Signin = () => {
       !data.email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)
         ? setUnvalidEmail(true)
         : setUnvalidEmail(false);
-
-      if (!isEmptyField && !isUnvalidPass && !unvalidEmail) {
-        try {
-          const user = await axios.post(`${API_KEY}/auth/register`, data);
-          setSignType("login");
-        } catch (error) {
-          console.log("Error while logging in", error);
-        }
+      if (!isEmptyField && !isUnvalidPass && unvalidEmail === false) {
+        return;
+      }
+      try {
+        const user = await axios.post(`${API_KEY}/auth/register`, data);
+        setSignType("login");
+      } catch (error) {
+        console.log("Error while logging in", error);
       }
     } else {
       try {

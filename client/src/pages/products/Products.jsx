@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import List from '@mui/material/List';
 
 import MenuIcon from '@mui/icons-material/Tune';
@@ -79,6 +79,23 @@ const handleDrawerToggle = () => {
 };
 
 
+// for toggling 
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen1, setIsOpen1] = useState(false);
+  const [isOpen2, setIsOpen2] = useState(false);
+
+  const toggleHeading = () => {
+    setIsOpen(prevState => !prevState);
+  };
+  const toggleHeading1 = () => {
+    setIsOpen1(prevState => !prevState);
+  };
+  const toggleHeading2 = () => {
+    setIsOpen2(prevState => !prevState);
+  };
+
+
 const drawer = (
   < >
     <Toolbar />
@@ -88,10 +105,11 @@ const drawer = (
     <div className="products-part" style={{display: 'flex'}}>
         <div className="filters" >
           <div className="type-filter-block">
-            <h3 className="h3-drawer">product type</h3>
+          <h3 className="h3-drawer" onClick={() => { toggleHeading(); }}>product type <KeyboardArrowRightIcon className={` ${isOpen ? 'open' : ''}`} /></h3>
             <ul>
               {['tshirt', 'pants', 'shoes'].map(type => (
                 <li 
+                className={`toggle-heading ${isOpen ? 'open' : ''}`}
                 key={type}
                 onClick={()=> setFilters(prev => {
                   return {
@@ -103,36 +121,36 @@ const drawer = (
                   margin: '15px',
                   cursor: 'pointer',
                   color: filters.type === type && 'blue',
-                }}>{type}</li>
+                }}>{isOpen && (type)}</li>
               ))}
             </ul>
           </div>
           <div style={{marginTop: '30px'}} className="gender-filter-block">
-            <h3 className="h3-drawer">gender</h3>
+            <h3 className="h3-drawer" onClick={() => { toggleHeading1(); }}>gender <KeyboardArrowRightIcon className={` ${isOpen1 ? 'open' : ''}`} /></h3>
             <ul>
               {['male', 'female'].map(gender => (
                 <li 
                 key={gender}
-                onClick={()=> setFilters(prev => {
-                  return {
+                className={`toggle-heading ${isOpen1 ? 'open' : ''}`}
+                onClick={() => {
+                  setFilters(prev => ({
                     ...prev,
-                    gender: prev.gender===gender ? '' : gender,
-                  }
-                })}
+                    gender: prev.gender === gender ? '' : gender,
+                  })) }}
                 style={{
                   margin: '15px',
                   cursor: 'pointer',
                   color: filters.gender === gender && 'blue',
-                }}>{gender}</li>
+                }}>{isOpen1 && (gender)}</li>
               ))}
             </ul>
           </div>
           <div style={{marginTop: '30px'}} className="sizes-filter-block">
-            <h3 className="h3-drawer">sizes</h3>
+          <h3 className="h3-drawer" onClick={() => { toggleHeading2(); }}>sizes <KeyboardArrowRightIcon className={` ${isOpen2 ? 'open' : ''}`} /></h3>
             <ul style={{display: 'flex', flexDirection: 'column', margin: '18px', gap: '11px'}}>
               {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map(size => (
                 <button 
-                className={`sizes-button animated-button`}
+                className={`sizes-button  toggle-heading ${isOpen2 ? 'open animated-button'  : ''}`}
                 key={size} 
                 onClick={()=> setFilters(prev => {
                   return {
@@ -146,7 +164,7 @@ const drawer = (
                   boxShadow: filters.sizes.includes(size) && " 0 0 0 5px rgba(0, 0, 0, 0.2)",
                   color: filters.sizes.includes(size) && "#ffffff",
                   background: filters.sizes.includes(size) && "#232323",
-                }}>{size}</button>
+                }}>{isOpen2 && (size)}</button>
               ))}
             </ul>
           </div>
@@ -212,9 +230,6 @@ const container = window !== undefined ? () => window().document.body : undefine
       </AppBar>
 
 
-
-
-
 {/* the drawer  */}
       <Box
         className="drawer"
@@ -223,7 +238,6 @@ const container = window !== undefined ? () => window().document.body : undefine
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
         aria-label="mailbox folders"
       >
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
 
 
         <Drawer
@@ -240,6 +254,7 @@ const container = window !== undefined ? () => window().document.body : undefine
           }}
           className="drawer"
         >
+          <button onClick={handleDrawerToggle}>close button</button>
           {drawer}
         </Drawer>
       </Box>
@@ -272,7 +287,7 @@ const container = window !== undefined ? () => window().document.body : undefine
         {products.length < 1 
           ? (<h2>no products</h2>)
           : products.map(p => (
-            <ProductCard sizes={p.sizes} gender={p.gender} views={p.views} sold={p.sold} title={p.title} createdAt={p.createdAt} key={p._id} desc={p.desc} price={p.price} />
+            <ProductCard id={p._id} sizes={p.sizes} gender={p.gender} views={p.views} sold={p.sold} title={p.title} createdAt={p.createdAt} key={p._id} desc={p.desc} price={p.price} />
           ))
         }
         </div>
@@ -309,7 +324,6 @@ export default Products
 
 
 
-// why the first code filters is not working
 
 
 

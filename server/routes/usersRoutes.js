@@ -4,6 +4,10 @@ import {
   getUsers,
   deleteUser,
   updateUser,
+  likeProduct,
+  getLikes,
+  cart,
+  getCart,
 } from "../controllers/usersCont.js";
 import { 
   verifyToken,
@@ -28,10 +32,14 @@ router.get('/', verifyTokenAndAdmin, getUsers) // GET all users (admin only)
 
 
 /* DELETE */ 
-router.delete('/:id', verifyTokenAndAuthorization, deleteUser)
+router.delete('/:id', verifyTokenAndAuthorization, deleteUser) // (admin or current authenticated user)
 
 /* UPDATE */
-router.put('/:id', verifyTokenAndAuthorization, updateUser)
+router.put('/update/:id', verifyTokenAndAuthorization, updateUser)
+router.put('/like/:productId', verifyToken, likeProduct) // LIKE product (any authenticated user)
+router.get('/like/:userId', verifyTokenAndAuthorization, getLikes) // get user liked products
+router.get('/cart/:id', verifyTokenAndAuthorization, getCart) // GET user's cart (any authenticated user)
+router.put('/cart', verifyToken, cart) // ADD / REMOVE product in user's cart (any authenticated user)
 
 
 
