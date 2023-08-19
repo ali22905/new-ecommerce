@@ -26,6 +26,7 @@ const NavBar = ({ searchQuery, setSearchQuery }) => {
   }
 
   return (
+    <>
     <div className="navbar">
       {currentUser ? <button onClick={logout}>logout</button> : <Link to='signin'>login</Link>}
       <h4>
@@ -34,6 +35,7 @@ const NavBar = ({ searchQuery, setSearchQuery }) => {
       <input onKeyPress={handleKeyPress} onChange={(e)=> setSearchQuery(e.target.value)} value={searchQuery} type="text" placeholder='search' />
       <button onClick={submitSearch}>search</button>
     </div>
+    </>
   );
 }
 

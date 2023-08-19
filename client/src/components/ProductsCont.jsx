@@ -50,6 +50,7 @@ const ProductsCont = ({ query }) => {
       })
     }
   }, [filter, query]); //eslint-disable-line
+
   return (
     <div>
       {products.length > 0 ? 
@@ -108,11 +109,13 @@ const ProductsCont = ({ query }) => {
                       itemId={product._id} // NOTE: itemId is required for track items
                       title={product.title}
                       key={product._id}
+                      id={product._id}
                       price={product.price}
                       createdAt={product.createdAt}
                       onClick={handleClick(product._id)}
                       selected={isItemSelected(product._id)}
                       visibility={visibility}
+                      style={{marginInline: '70px'}}
                     />
                   ))
                 }
