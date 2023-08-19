@@ -149,11 +149,11 @@ export const cart = async (req, res) => {
     }
 
     if (!productExist) {
-      user.cart.addToSet(req.body)
+      user.cart.push(req.body)
     }
 
     const updatedUser = await user.save()
-    res.status(200).json(updatedUser)
+    res.status(200).json(updatedUser.cart)
   } catch (error) {
     res.status(500).json({ message: error.message, error, })
   }
@@ -177,7 +177,7 @@ export const likeProduct = async (req, res) => {
     }
 
     const updatedUser = await user.save();
-    res.status(200).json(updatedUser)
+    res.status(200).json(updatedUser.favs)
 
   } catch (error) {
     res.status(500).json({ message: error.message, error,})
