@@ -169,13 +169,13 @@ position: relative;
 }
 @media (max-width: 375px){
 .animated-button{
-  margin: 0 5px !important;
+  margin: 0 5px ;
 }
 
 }
 @media (max-width: 325px){
 .animated-button{
-  margin: 0 5px !important;
+  margin: 0 5px ;
 }
 .products-slider-filters{
   padding: 0 !important;

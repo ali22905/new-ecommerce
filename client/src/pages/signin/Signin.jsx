@@ -149,7 +149,7 @@ const Signin = () => {
                     value={data.password}
                     name="password"
                     onChange={handleChange}
-                    type="text"
+                    type="password"
                     placeholder="enter a password"
                     required
                   />
@@ -268,7 +268,7 @@ const Signin = () => {
                     value={data.password}
                     name="password"
                     onChange={handleChange}
-                    type="text"
+                    type="password"
                     placeholder="password"
                     required
                   />
