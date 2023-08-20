@@ -4,19 +4,27 @@ import { useNavigate, useParams } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import AddIcon from '@mui/icons-material/Add';
+import RemoveShoppingCartIcon from '@mui/icons-material/RemoveShoppingCart';
 import RemoveIcon from '@mui/icons-material/Remove';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useSelector, useDispatch } from "react-redux";
-import { likeProduct, resetLikes } from '../../redux/userReducer';
+import { likeProduct, updateCart } from '../../redux/userReducer';
+import _ from 'lodash'
 
 
 const Product = () => {
   const [product, setProduct] = useState({});
   const [colors, setColors] = useState([]);
-  const [selectedColor, setSelectedColor] = useState("");
   const [sizes, setSizes] = useState([]);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [quantity, setQuantity] = useState(1);
+  const [cartExist, setCartExist] = useState(false);
+  const [isLiked, setIsLiked] = useState(false);
   const params = useParams();
+  const [cartData, setCartData] = useState({
+    productId: params.id,
+    color: "",
+    quantity: 1,
+    size: "",
+  });
   const API_KEY = import.meta.env.VITE_API_KEY;
   const { currentUser, cart } = useSelector((state) => state.user);
   const dispatch = useDispatch()
@@ -24,48 +32,89 @@ const Product = () => {
 
 
   const handleMinusQuntity = (e) => {
-    if (quantity <= 1) {
-      setQuantity(1)
+    if (cartData.quantity <= 1) {
+      setCartData(prev => {return { ...prev, quantity: 1 }})
     }else {
-      setQuantity(prev => prev - 1)
+      setCartData(prev => {return { ...prev, quantity: prev.quantity - 1 }})
     }
   }
+
 
   const handleLike = async() => {
     !currentUser && navigate('/signin')
     try {
-      const {data} = await axios.put(`${API_KEY}/users/like/${params.id}`, {}, {
+      const {data:user} = await axios.put(`${API_KEY}/users/like/${params.id}`, {}, {
         headers: {
           'token': `Barear ${currentUser.accessToken}`
         }
       })
-      console.log(data)
       dispatch(likeProduct(params.id))
     } catch (error) {
       console.log('error while liking a product', error)
     }
   }
-  const handleCart = () => {
+
+
+  const handleCart = async() => {
     !currentUser && navigate('/signin')
+    try {
+      const { data:cart } = await axios.put(`${API_KEY}/users/cart`, {...cartData, quantity: cartData.quantity.toString()}, {
+        headers: {
+          token: `Barear ${currentUser.accessToken}`
+        }
+      })
+      dispatch(updateCart(cart))
+    } catch (error) {
+      console.log('custom error while adding product to cart', error)
+    }
   }
 
-  useEffect(() => {
 
+  useEffect(() => {
     const getProduct = async () => {
       try {
         const response = await axios.get(`${API_KEY}/products/${params.id}`)
         setProduct(response.data)
         setColors(response.data.colors)
-        setSelectedColor(response.data.colors[0])
+        setCartData(prev => {return { ...prev, color: response.data.colors[0] }})
         setSizes(response.data.sizes)
-        setSelectedSize(response.data.sizes[0])
+        setCartData(prev => {return { ...prev, size: response.data.sizes[0] }})
       } catch (error) {
         console.log('error while fetching a product by its id' ,error)
       }
     }
     getProduct()
+  }, []); // eslint-disable-line
 
-  }, []);
+  useEffect(() => {
+    const checkCart = async() => {
+      if (currentUser) {
+        if(cart.length > 0) {
+          for (let i = 0; i < cart.length; i++) {
+            const { _id, ...product } = cart[i]
+            console.log('product from redux', product)
+            console.log('current product data', {...cartData, quantity: cartData.quantity.toString()})
+            console.log('--------------------------------------------')
+            if(_.isEqual(product, {...cartData, quantity: cartData.quantity.toString()})) {
+              setCartExist(true)
+            }else {
+              setCartExist(false)
+            }
+          }
+        }else {
+          setCartExist(false)
+          console.log("worked and legnth smaller than 1")
+        }
+      }
+    }
+    checkCart()
+  }, [cart, cartData, currentUser]);
+
+  useEffect(() => {
+    if(currentUser) {
+      currentUser.favs.includes(params.id) ? setIsLiked(true) : setIsLiked(false)
+    }
+  }, [currentUser, params.id]);
   return (
     <div style={{display: 'flex', justifyContent: 'space-between', marginInline: '100px'}}>
       <div style={{width: '50%'}}>
@@ -77,9 +126,16 @@ const Product = () => {
           <p>{product.views} popularity</p>
         </div>
         <div style={{marginTop: '30px'}} className="functions">
-          <FavoriteBorderIcon onClick={handleLike} style={{cursor: 'pointer', marginTop: '10px'}} />
+          
+          {isLiked 
+            ? <FavoriteIcon onClick={handleLike} style={{cursor: 'pointer', marginTop: '10px'}} />
+            : <FavoriteBorderIcon onClick={handleLike} style={{cursor: 'pointer', marginTop: '10px'}} />
+          }
           <br />
-          <AddShoppingCartIcon onClick={handleCart} style={{cursor: 'pointer', marginTop: '10px'}} />
+          {cartExist 
+            ?<RemoveShoppingCartIcon onClick={handleCart} style={{cursor: 'pointer', marginTop: '10px'}} />
+            :<AddShoppingCartIcon onClick={handleCart} style={{cursor: 'pointer', marginTop: '10px'}} />
+          }
         </div>
       </div>
       <div style={{width: '50%', display: 'flex', flexDirection:'column', alignItems:'flex-end'}}>
@@ -95,9 +151,9 @@ const Product = () => {
                 marginInline: '13px',
                 display: "block",
                 cursor: 'pointer',
-                border: selectedColor === color && '2px solid #0cc13c',
+                border: cartData.color === color && '2px solid #0cc13c',
               }}
-              onClick={() => setSelectedColor(color)}
+              onClick={() => setCartData(prev => {return { ...prev, color, }})}
             ></span>
           ))}
         </div>
@@ -109,9 +165,9 @@ const Product = () => {
               key={size}
               style={{
                 marginInline: '5px', 
-                backgroundColor: selectedSize === size && '#aaeeee'
+                backgroundColor: cartData.size === size && '#aaeeee'
               }}
-              onClick={() => setSelectedSize(size)}
+              onClick={() => setCartData(prev => {return { ...prev, size, }})}
             >
               {size}
             </button>
@@ -119,8 +175,8 @@ const Product = () => {
         </div>
         <div className="quntity">
           <RemoveIcon sx={{marginInline: '15px'}} onClick={handleMinusQuntity} />
-          <span>{quantity}</span>
-          <AddIcon sx={{marginInline: '15px'}} onClick={() => setQuantity(prev => prev + 1)} />
+          <span>{cartData.quantity}</span>
+          <AddIcon sx={{marginInline: '15px'}} onClick={() => setCartData(prev => {return { ...prev, quantity: prev.quantity + 1 }})} />
         </div>
       </div>
     </div>

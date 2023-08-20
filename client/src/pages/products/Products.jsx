@@ -155,7 +155,7 @@ const drawer = (
                 onClick={()=> setFilters(prev => {
                   return {
                     ...prev, 
-                    sizes: prev.sizes.includes(size) 
+                    sizes: prev.sizes.includes(size)
                     ? prev.sizes.filter((s) => s !== size)
                     : [...prev.sizes, size]
                   }

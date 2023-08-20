@@ -14,7 +14,7 @@ import Signin from './pages/signin/Signin'
 import Products from './pages/products/Products'
 import Product from './pages/product/Product'
 import NotFound from './pages/NotFound'
-import { resetCart, resetLikes } from "./redux/userReducer";
+import { updateCart, resetLikes } from "./redux/userReducer";
 import axios from "axios";
 
 
@@ -26,18 +26,25 @@ function App() {
   const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
-    const resetCartLikes = async() => {
+    const resetLikesCart = async() => {
       const { data:likedProducts } = await axios.get(`${API_KEY}/users/like/${currentUser._id}`, {
         headers: {
           token: `Barear ${currentUser.accessToken}`
         }
       })
+      const { data:cart } = await axios.get(`${API_KEY}/users/cart/${currentUser._id}`, {
+        headers: {
+          token: `Barear ${currentUser.accessToken}`
+        }
+      })
+
       const likedIds = likedProducts.map(product => {
         return product._id
       })
       dispatch(resetLikes(likedIds))
+      dispatch(updateCart(cart))
     }
-    currentUser && resetCartLikes()
+    currentUser && resetLikesCart()
   }, []);
   return (
     <main>
