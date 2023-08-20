@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 /* COMPONENTS */ 
 // import area
 import ProductsCont from "../../components/ProductsCont";
+import Footer from "../../components/footer/Footer";
 import "./Home.css";
 
 
@@ -13,20 +14,20 @@ const Home = () => {
   return (
     <>
       {/* start landing section  */}
-      <div className="landingContainer">
+      <div className="landingContainer animate-entrance2">
         <img
           src="/assets/model-transparent-backGround-transformed.png"
           alt="this is an img"
           className="movingImage"
         />
-        <div className="text1">
+        <div className="text1 animate-entrance" >
           <h1>
             <span>
               SIMPLIFY <br /> EVERYTHING.
             </span>
           </h1>
         </div>
-        <Link to="/products" className="btn">
+        <Link to="/products" className="btn animate-entrance">
           <svg
             height="24"
             width="24"
@@ -77,7 +78,7 @@ const Home = () => {
       <br />
       <hr />
       <br />
-
+      <Footer />
     </>
   );
 };

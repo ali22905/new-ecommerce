@@ -1,5 +1,5 @@
 .landingContainer{
-  height: 65vh ;
+  height: 80vh ;
   overflow: hidden;
   position: relative;
   /* background-color: #efefef; */
@@ -41,6 +41,39 @@ position: relative;
   padding: 10px 20px !important;
   right: -67%;
 }
+
+
+
+/* Define entrance animation for landingContainer */
+@keyframes entrance {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Apply animation to the landingContainer on page load */
+.animate-entrance {
+  animation: entrance 1.5s forwards; /* Animation duration is 1 second */
+}
+
+
+@keyframes entrance2 {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+/* Apply animation to the landingContainer on page load */
+.animate-entrance2 {
+  animation: entrance2 1.5s forwards; /* Animation duration is 1 second */
+}
+
 
 
 

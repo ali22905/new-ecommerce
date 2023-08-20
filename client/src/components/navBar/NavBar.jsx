@@ -1,22 +1,34 @@
-import { useState } from 'react';
-import './NavBar.css'
+import { useState, useEffect } from 'react';
+import './NavBar.css';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { logoutUser } from '../../redux/userReducer';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
-
 
 const NavBar = ({ searchQuery, setSearchQuery }) => {
   const { currentUser, cart } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  
+
+  const [isNavbarVisible, setIsNavbarVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrolled = window.scrollY > 99; // Adjust the scroll threshold as needed
+      setIsNavbarVisible(!scrolled);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const submitSearch = () => {
-    navigate('/products')
-  }
+    navigate('/products');
+  };
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
@@ -25,26 +37,34 @@ const NavBar = ({ searchQuery, setSearchQuery }) => {
   };
 
   const logout = () => {
-    dispatch(logoutUser())
-  }
+    dispatch(logoutUser());
+  };
 
   return (
     <>
-    <div className="navbar">
-      {currentUser ? <button onClick={logout}>logout</button> : <Link to='signin'>login</Link>}
-      <Link style={{marginLeft: '10px'}} to={currentUser ? "/cart" : '/signin'}>
-        <Badge badgeContent={cart ? cart.length : 0} color="warning" >
-          <ShoppingCartIcon />
-        </Badge>
-      </Link>
-      <h4>
-      navigation is under construction...
-      </h4>
-      <input onKeyPress={handleKeyPress} onChange={(e)=> setSearchQuery(e.target.value)} value={searchQuery} type="text" placeholder='search' />
-      <button onClick={submitSearch}>search</button>
-    </div>
+      <div className={`navbar ${isNavbarVisible ? '' : 'hidden'}`}>
+        {currentUser ? (
+          <button onClick={logout}>logout</button>
+        ) : (
+          <Link to='signin'>login</Link>
+        )}
+        <Link style={{ marginLeft: '10px' }} to={currentUser ? '/cart' : '/signin'}>
+          <Badge badgeContent={cart ? cart.length : 0} color='warning'>
+            <ShoppingCartIcon />
+          </Badge>
+        </Link>
+        <h4>navigation is under construction...</h4>
+        <input
+          onKeyPress={handleKeyPress}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchQuery}
+          type='text'
+          placeholder='search'
+        />
+        <button onClick={submitSearch}>search</button>
+      </div>
     </>
   );
-}
+};
 
 export default NavBar;
