@@ -84,6 +84,7 @@ const handleDrawerToggle = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen1, setIsOpen1] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
+  const [openSort, setOpenSorts] = useState(false);
 
   const toggleHeading = () => {
     setIsOpen(prevState => !prevState);
@@ -94,6 +95,10 @@ const handleDrawerToggle = () => {
   const toggleHeading2 = () => {
     setIsOpen2(prevState => !prevState);
   };
+  const openSorts = () => {
+    setOpenSorts(prevState => !prevState);
+  };
+  
 
 
 const drawer = (
@@ -131,7 +136,7 @@ const drawer = (
               {['male', 'female'].map(gender => (
                 <li 
                 key={gender}
-                className={`toggle-heading ${isOpen1 ? 'open' : ''}`}
+                className={`toggle-heading ${isOpen1 ? 'open' : ''} `}
                 onClick={() => {
                   setFilters(prev => ({
                     ...prev,
@@ -147,7 +152,7 @@ const drawer = (
           </div>
           <div style={{marginTop: '30px'}} className="sizes-filter-block">
           <h3 className="h3-drawer" onClick={() => { toggleHeading2(); }}>sizes <KeyboardArrowRightIcon className={` ${isOpen2 ? 'open' : ''}`} /></h3>
-            <ul style={{display: 'flex', flexDirection: 'column', margin: '18px', gap: '11px'}}>
+            <ul style={{display: 'flex', flexDirection: 'column', margin: '18px 0', gap: '11px'}}>
               {['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].map(size => (
                 <button 
                 className={`sizes-button  toggle-heading ${isOpen2 ? 'open animated-button'  : ''}`}
@@ -198,7 +203,7 @@ const container = window !== undefined ? () => window().document.body : undefine
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
           zIndex: '1',
-          paddingTop: '66.6px',
+          paddingTop: '65.6px',
           boxShadow: 'none',
           backgroundColor: '#fff',
         }}
@@ -218,12 +223,17 @@ const container = window !== undefined ? () => window().document.body : undefine
           ? <h1 >search: <span style={{color: 'blue'}}>{searchQuery}</span></h1> 
           : <h1 className="h1-drawer-navbar">Products</h1>}
           <br/>
-          <div  className="sorts">
-          <button onClick={()=> setQuery('new') }  className={`${query === "new" && "active1"} animated-button` }>newest</button>
+
+
+          {/* button open sorts  */}
+          <button className={`element-to-display`} onClick={openSorts}> open sorts</button>
+          <div  className={`sorts  ${openSort ? 'sortOpen'  : 'sortClosed'}`}>
+          <button onClick={()=> setQuery('new') }  className={`${query === "new" && "active1"}  animated-button` }>newest</button>
           <button onClick={()=> setQuery('old')}  className={`${query === "old" && "active1"} animated-button` }>oldest</button>
-          <button onClick={()=> setQuery('popular')}  className={`${query === "popular" && "active1"} animated-button` }>most popular</button>
-          <button onClick={()=> setQuery('sold')}  className={`${query === "sold" && "active1"} animated-button` }>most selled</button>
+          <button onClick={()=> setQuery('popular')}  className={`${query === "popular" && "active1"}  animated-button` }>most popular</button>
+          <button onClick={()=> setQuery('sold')}  className={`${query === "sold" && "active1"}  animated-button` }>most selled</button>
           </div>
+
           </Typography> 
         </Toolbar>
         <hr className="MuiDivider-root MuiDivider-fullWidth css-9mgopn-MuiDivider-root"/>
