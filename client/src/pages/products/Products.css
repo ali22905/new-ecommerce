@@ -58,9 +58,37 @@
 
 
 
-@media (max-width: 768px){
+@media (max-width: 599px){
   .AppBar{
     padding-top: 98.6px !important;
+  }
+}
+@media (max-width: 599px){
+  .h1-drawer-navbar {
+    font-size: 25px !important;
+  }
+  .drawer-navbar {
+    justify-content: flex-start;
+  }
+}
+
+
+@media (max-width: 426px){
+  .h1-drawer-navbar {
+    font-size: 23px !important;
+  }
+  .drawer-navbar {
+    justify-content: space-between;
+  }
+}
+
+
+@media (max-width: 319px){
+  .h1-drawer-navbar {
+    font-size: 21px !important;
+  }
+  .drawer-navbar {
+    justify-content: space-between;
   }
 }
 
