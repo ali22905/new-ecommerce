@@ -161,7 +161,8 @@ const Product = () => {
               marginInline: '13px',
               display: "block",
               cursor: 'pointer',
-              border: cartData.color === color && '2px solid #0cc13c  ',
+              border: cartData.color === color && '2px dotted #fff  ',
+              // border: cartData.color === color && '2px solid #0cc13c  ',
             }}
             onClick={() => setCartData(prev => {return { ...prev, color, }})}
             ></span>
@@ -221,7 +222,7 @@ const Product = () => {
 
 
       {cartExist 
-          ?<button className='cartButton' onClick={handleCart} style={{cursor: 'pointer', marginTop: '10px'}} >Remove from cart</button>
+          ?<><button className='cartButton' onClick={handleCart} style={{cursor: 'pointer', marginTop: '10px'}} >Remove from cart</button>  <br /><hr style={{    width: "56%",borderColor: "#fefefe"}} /></>
           : <><button className='cartButton' onClick={handleCart} style={{cursor: 'pointer', marginTop: '10px'}} >Add to cart</button> 
           <br />
           <hr style={{    width: "56%",borderColor: "#fefefe"}} /> </>

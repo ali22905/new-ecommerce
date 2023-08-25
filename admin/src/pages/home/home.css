@@ -5,4 +5,64 @@
 .homeWidgets{
     display: flex;
     margin: 20px;
+    flex-direction: column; 
 }
+
+.featuredInfo{
+display: none;
+}
+.widgetSm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+.widgetSmList{
+    width: 85%;
+    display: grid;
+    gap: 78px;
+    row-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+.widgetSmListItem{
+    justify-content: space-between  !important;
+    margin: 45px 0px !important;
+    padding: auto 34px !important;
+    width: 100% !important;
+    display: grid !important;
+    gap: 6px !important;
+    align-items: center !important;
+}
+
+@media (max-width: 1080px){
+    .chart{
+        display: none ;
+    }
+}
+
+
+
+
+
+
+/* for the new joined members child 
+    justify-content: space-between;
+    margin: 45px 0px;
+    padding: auto 34px;
+    width: 100%;
+    display: grid;
+    gap: 6px;
+*/
+
+
+/* for the elements of the table 
+    margin: 35px 0;
+    border-bottom: 1px solid #5555;
+     */
+
+
+/* for the table titles 
+display: none;
+*/

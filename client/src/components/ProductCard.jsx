@@ -46,7 +46,7 @@ const ProductCard = ({ title, desc, price, createdAt, key, id }) => {
               style={{
                 lineHeight: "1.2307692308",
                 fontSize: "16px",
-                color: "#c62828",
+                color: "#e51b23",
                 fontFamily: "'Open Sans', sans-serif",
                 fontWeight: "bold",
                 textTransform: "uppercase",
@@ -70,7 +70,7 @@ const ProductCard = ({ title, desc, price, createdAt, key, id }) => {
               style={{
                 lineHeight: "1.2307692308",
                 fontSize: "13px",
-                color: "#c62828",
+                color: "#e51b23",
                 fontFamily: "'Open Sans', sans-serif",
                 fontWeight: "700",
                 textTransform: "none",
