@@ -16,10 +16,6 @@ import NewProduct from "./pages/newProduct/NewProduct";
 import "./App.css";
 
 
-
-
-
-
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
@@ -40,14 +36,6 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 const drawerWidth = 240;
-
-
-
-
-
-
-
-
 
 
 
@@ -87,7 +75,7 @@ function App(props) {
       boxShadow: "none",
     }}
   >
-    <Toolbar>
+    <Toolbar sx={{backgroundColor: "rgb(251, 251, 255)"}}>
       <IconButton
         color="#232323"
         aria-label="open drawer"
@@ -130,7 +118,7 @@ function App(props) {
 variant="permanent"
 sx={{
   display: { xs: 'none', sm: 'block' },
-  '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+  '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth,  backgroundColor: "rgb(251, 251, 255)"},
 }}
 open
 >
