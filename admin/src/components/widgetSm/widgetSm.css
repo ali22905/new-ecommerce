@@ -53,6 +53,12 @@
     background-color: #eeeef7;
     color: #555;
     cursor: pointer;
+    transition: .4s;
+}
+.widgetSmButton:hover{
+    /* background: #9f9f9f; */
+    background: #999;
+    color: #eeeef7;
 }
 
 .widgetSmIcon{
