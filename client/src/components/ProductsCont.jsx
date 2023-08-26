@@ -134,6 +134,9 @@ function LeftArrow() {
     <KeyboardArrowLeftIcon
       disabled={isFirstItemVisible}
       onClick={() => scrollPrev()}
+      style={{
+        cursor: "pointer",
+      }}
     >
       
     </KeyboardArrowLeftIcon>
@@ -147,6 +150,9 @@ function RightArrow() {
     <KeyboardArrowRightIcon
       disabled={isLastItemVisible}
       onClick={() => scrollNext()}
+      style={{
+        cursor: "pointer",
+      }}
     >
       Right
     </KeyboardArrowRightIcon>

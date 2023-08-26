@@ -5,4 +5,95 @@
 .homeWidgets{
     display: flex;
     margin: 20px;
+    flex-direction: column; 
 }
+
+.featuredInfo{
+display: none;
+}
+.widgetLg{
+    overflow: auto !important;
+}
+.widgetSm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
+
+.widgetSmList{
+    width: 85%;
+    display: grid;
+    gap: 78px;
+    row-gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+}
+.widgetSmListItem{
+    justify-content: space-between  !important;
+    margin: 45px 0px !important;
+    padding: auto 34px !important;
+    width: 100% !important;
+    display: grid !important;
+    gap: 6px !important;
+    align-items: center !important;
+}
+
+@media (max-width: 1105px){
+    .featured{
+        flex-direction:column;
+        }
+}
+@media (max-width: 1080px){
+    .chart{
+        display: none ;
+    }
+}
+
+@media (max-width: 950px){
+    .widgetSmList{
+        width: 85%;
+        display: grid;
+        gap: 78px;
+        row-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 736px){
+    .widgetSmList{
+        width: 85%;
+        display: grid;
+        gap: 78px;
+        row-gap: 20px;
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .MuiBox-root.css-1v5u2yv{
+        max-width: 100%;
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+/* for the new joined members child 
+    justify-content: space-between;
+    margin: 45px 0px;
+    padding: auto 34px;
+    width: 100%;
+    display: grid;
+    gap: 6px;
+*/
+
+
+/* for the elements of the table 
+    margin: 35px 0;
+    border-bottom: 1px solid #5555;
+     */
+
+
+/* for the table titles 
+display: none;
+*/

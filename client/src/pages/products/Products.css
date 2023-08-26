@@ -6,7 +6,7 @@
   font-size: medium !important;
 }
 .products{
-  font-family: Poppins, sans-serif;
+  font-family:  "Harmonia Sans", sans-serif;
 }
 .h1-drawer-navbar{
   color: #232323;
@@ -20,8 +20,12 @@
 
 .h3-drawer{
   margin-left: 7px;
+  font-size: 1em;
   cursor: pointer;
   display: flex;
+  letter-spacing: 0.06rem;
+  align-items: center;
+  font-weight: 500;
   color: #232323;
 }
 
@@ -35,50 +39,58 @@
   width: fit-content;
 }
 
+.css-1rdqxdz-MuiList-root {
+  padding: 0 !important;
+}
 
+.h1-filers{
+  margin: 20px 7px 0;
+  font-weight: 600;
+  font-size: 34px;
+  color: #232323;
+}
 
-
-
-
-.element-to-display {
-  display: none; /* Hide the element by default */
+.soret-by{
+  display: flex;
 }
 
 
 
 
 
-@media (max-width: 967px) {
-  .element-to-display {
-      display: block; /* Display the element */
-      /* Add other styling rules as needed */
+@media (max-width: 599px){
+  .AppBar{
+    padding-top: 98.6px !important;
+  }
+}
+@media (max-width: 599px){
+  .h1-drawer-navbar {
+    font-size: 25px !important;
+  }
+  .drawer-navbar {
+    justify-content: flex-start;
   }
 }
 
 
-@media (max-width: 967px) {
-  .sortOpen{
-    display: flex;
-    position: absolute;
-    right: -1%;
-    flex-direction: column;
-    top: 52%;
-    width: 127px;
-}
-  
-  .sortOpen button{
-    margin-top: 10px;
-    font-size: 13px;
-    padding: 4px 0px;
+@media (max-width: 426px){
+  .h1-drawer-navbar {
+    font-size: 23px !important;
   }
-  .sortClosed{
-    display: none; /* Hide the element by default */
+  .drawer-navbar {
+    justify-content: space-between;
   }
 }
 
 
-
-
+@media (max-width: 319px){
+  .h1-drawer-navbar {
+    font-size: 21px !important;
+  }
+  .drawer-navbar {
+    justify-content: space-between;
+  }
+}
 
 
 

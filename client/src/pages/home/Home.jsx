@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 /* COMPONENTS */ 
 // import area
 import ProductsCont from "../../components/ProductsCont";
+import Footer from "../../components/footer/Footer";
 import "./Home.css";
 
 
@@ -13,20 +14,20 @@ const Home = () => {
   return (
     <>
       {/* start landing section  */}
-      <div className="landingContainer">
+      <div className="landingContainer animate-entrance2">
         <img
           src="/assets/model-transparent-backGround-transformed.png"
           alt="this is an img"
           className="movingImage"
         />
-        <div className="text1">
+        <div className="text1 animate-entrance" >
           <h1>
             <span>
               SIMPLIFY <br /> EVERYTHING.
             </span>
           </h1>
         </div>
-        <Link to="/products" className="btn">
+        <Link to="/products" className="btn animate-entrance">
           <svg
             height="24"
             width="24"
@@ -40,6 +41,7 @@ const Home = () => {
           </svg>
           <p  class="text">Shop Now</p>
         </Link>
+        
       </div>
       {/* end landing section */}
 
@@ -47,6 +49,70 @@ const Home = () => {
 
 
 
+      <div className="logos">
+        <div className="logos-slide">
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+          <p style={{textTransform: 'capitalize'}}>Don't miss our offer <span className='red-color'> ( Buy 2 Get 1 Free ) </span></p>
+        </div>  
+        </div>
 
 
 
@@ -59,6 +125,7 @@ const Home = () => {
       <div className="recent-products" style={{ margin: "75px 0"}}>
         <h2 className="recently-added-h1">Recently Added Products </h2>
         <ProductsCont query="new" />
+        <div className="viewAllButton"><Link to="/products" className="custom-button">View All</Link></div>
       </div>
 
       <hr />
@@ -66,6 +133,7 @@ const Home = () => {
       <div className="popular-products" style={{ margin: "75px 0"}}>
         <h2 className="recently-added-h1">popular products</h2>
         <ProductsCont query="popular" />
+        <div className="viewAllButton"><Link to="/products" className="custom-button">View All</Link></div>
       </div>
       <br />
       <hr />
@@ -73,11 +141,12 @@ const Home = () => {
       <div className="most-sold-products" style={{ margin: "75px 0"}}>
         <h2 className="recently-added-h1">most sold products</h2>
         <ProductsCont query="sold" />
+        <div className="viewAllButton"><Link to="/products" className="custom-button">View All</Link></div>
       </div>
       <br />
       <hr />
       <br />
-
+      <Footer />
     </>
   );
 };

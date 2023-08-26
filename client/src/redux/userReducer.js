@@ -25,12 +25,12 @@ const userSlice = createSlice({
     resetLikes: (state, action) => {
       state.currentUser.favs = action.payload
     },
-    resetCart: (state, action) => {
+    updateCart: (state, action) => {
       state.currentUser.cart = action.payload
       state.cart = action.payload
     },
   },
 });
 
-export const { login, logoutUser, likeProduct, resetLikes, resetCart } = userSlice.actions;
+export const { login, logoutUser, likeProduct, resetLikes, updateCart } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,16 +1,23 @@
-.navbar{
+.navbar {
   width: 100%;
   padding: 20px;
   background-color: #f2f2f2;
   display: flex;
   justify-content: center;
   z-index: 2;
-  position: sticky;
+  transition: all 450ms ease-in-out;
+  position: absolute;
+}
+
+.navbar.hidden {
+  top: -100%; /* Completely hide the navbar */
+  position: fixed !important;
   top: 0;
-} 
-.navbar h4{
+}
+
+.navbar h4 {
   width: 65%;
   padding: 2px;
   border-bottom: 1px solid #232323;
   text-align: center;
-} 
+}

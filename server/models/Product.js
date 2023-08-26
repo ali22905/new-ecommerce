@@ -7,7 +7,7 @@ const ProductSchema = new mongoose.Schema(
     gender: { type: String, required: true },
     type: { type: String, required: true }, // t-shirt, pants, shoes, hoodie, or shorts
     sizes: { type: Array, required: true },
-    sizeType: { type: String },
+    sizeType: { type: String }, // men - women - kids
     colors: { type: [String], required: true },
     imgs: [{
       color: { type: String },

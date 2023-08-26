@@ -1,5 +1,5 @@
 .landingContainer{
-  height: 65vh ;
+  height: 80vh ;
   overflow: hidden;
   position: relative;
   /* background-color: #efefef; */
@@ -7,7 +7,6 @@
   width: 100%;
   display: block;
 }
-
 
 
 .movingImage {
@@ -27,8 +26,8 @@
 }
 .text1 h1{
   font-size: 5em;
-  margin: auto;
-  letter-spacing: 5px;
+  margin: auto ;
+  letter-spacing: 3px;
   color: #232323;
 }
 .text1 h1 span{
@@ -41,6 +40,39 @@ position: relative;
   padding: 10px 20px !important;
   right: -67%;
 }
+
+
+
+/* Define entrance animation for landingContainer */
+@keyframes entrance {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Apply animation to the landingContainer on page load */
+.animate-entrance {
+  animation: entrance 1.5s forwards; /* Animation duration is 1 second */
+}
+
+
+@keyframes entrance2 {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
+
+/* Apply animation to the landingContainer on page load */
+.animate-entrance2 {
+  animation: entrance2 1.5s forwards; /* Animation duration is 1 second */
+}
+
 
 
 
@@ -115,6 +147,109 @@ position: relative;
 }
 
 
+/* moving strip  */
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.logos {
+  overflow: hidden;
+  padding: 60px 0;
+  background: #000;
+  white-space: nowrap;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 0;
+}
+
+
+.logos:hover .logos-slide {
+  animation-play-state: paused;
+}
+
+.logos-slide {
+  animation: 15s slide infinite linear;
+  display: flex;
+  gap: 70px;
+  color: white;
+
+}
+.red-color{
+  color: #e51b23;
+  font-size: large;
+  font-weight: bold;
+}
+
+.viewAllButton{
+  width: 100%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.custom-button {
+  position: relative;
+  padding: 17px 77px;
+  background-color: black;
+  font-size: medium;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin: 0 auto;
+  overflow: hidden;
+  transition: background-color 0.9s ease, opacity 0.9s ease;
+  margin: 40px auto;
+}
+
+.custom-button::before {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  transform: skew(-15deg);
+  background-image: linear-gradient(90deg,transparent,rgba(225,255,255,.25),transparent);
+}
+
+.custom-button:hover {
+  background-color: rgba(0, 0, 0, 0.99);
+  opacity: 0.8;
+}
+
+.custom-button:hover::before {  
+  left: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Home media  */
@@ -122,6 +257,7 @@ position: relative;
 @media (max-width: 992px){
   .movingImage {
     max-width: 415px;
+    top: 17%;
   }
   .text1 h1{
     font-size: 3.5em;
@@ -151,31 +287,21 @@ position: relative;
     gap: 10px;
   }
 }
-@media (max-width: 768px){
-  .movingImage {
-    max-width: 375px;
-  }
-  .text1 h1{
-    font-size: 3em;
-  }
-  .btn {
-    bottom: 9%;
-    right: 9%;
-    width: 12em;
-    height: 3.5em;
-    border-radius: 3em;
-    gap: 10px;
-  }
-}
+
 @media (max-width: 375px){
+  .movingImage {
+    top: 139px;
+    left: -22%;
+  }
 .animated-button{
-  margin: 0 5px ;
+  margin: 0 5px  !important;
 }
 
 }
 @media (max-width: 325px){
 .animated-button{
   margin: 0 5px ;
+  padding: 7px 19px !important;
 }
 .products-slider-filters{
   padding: 0 !important;
