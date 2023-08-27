@@ -38,6 +38,8 @@ display: none;
     gap: 6px !important;
     align-items: center !important;
 }
+  
+
 
 @media (max-width: 1105px){
     .featured{
