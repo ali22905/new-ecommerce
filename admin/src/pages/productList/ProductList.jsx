@@ -10,6 +10,35 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Link } from "react-router-dom";
 import "./productList.css";
+import { tableCellClasses } from '@mui/material/TableCell';
+
+import { styled } from '@mui/material/styles';
+
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
+
+
+
 
 function createData(id, name, Price, quantity, Discount, Gender, type, size, color,) {
   return { id, name, Price, quantity, Discount, Gender , type, size, color, };
@@ -34,42 +63,42 @@ const rows = [
 const ProductList = () => {
   return (
     <div className="product-list-container">
-    <div className='deleteAllDiv'><Button variant="contained">Delete All &nbsp; <DeleteIcon fontSize='small' sx={{color:'#fff'}} /></Button></div>
+    <div className='deleteAllDiv'><Button variant="contained" sx={{backgroundColor: '#000 ', '&:hover': {backgroundColor: "rgba(0, 0, 0, 0.8) "}}}>Delete All &nbsp; <DeleteIcon fontSize='small' sx={{color:'#fff'}} /></Button></div>
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <TableCell sx={{fontWeight: 'bold'}} align='left'>id</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}}>Product Name</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Type</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Gender</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Size</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Color</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Price&nbsp;($)</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Discount&nbsp;($)</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">quantity</TableCell>
-            <TableCell align="right"></TableCell>
-            <TableCell align="right"></TableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align='left'>id</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}}>Product Name</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Type</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Gender</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Size</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Color</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Price&nbsp;($)</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Discount&nbsp;($)</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">quantity</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row, index) => (
-            <TableRow
+            <StyledTableRow 
               key={row.name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
-              <TableCell component="th" scope="row" sx={{fontWeight: 'bold'}}>{row.id + index + 1}</TableCell>
-              <TableCell component="th" scope="row"><Link to="/product/:productId" style={{ textDecoration: 'underline', color: '#000', fontWeight: 'bolder' }}>{row.name}</Link></TableCell>
-              <TableCell align="right">{row.type}</TableCell>
-              <TableCell align="right" style={row.Gender === 'M' ? { color: '#3498db', fontWeight: 'bold' } :{ color: '#e91e63', fontWeight: 'bold' } }>{row.Gender}</TableCell>
-              <TableCell align="right">{row.size}</TableCell>
-              <TableCell align="right" style={row.color === 'purple' ? { color: 'purple',textTransform: 'uppercase', fontWeight: 600 } : row.color === 'blue' ? { color: 'blue',textTransform: 'uppercase', fontWeight: 600 } : row.color === 'green' ? { color: 'green', textTransform: 'uppercase', fontWeight: 600 } : { color: 'black' }}>{row.color}</TableCell>
-              <TableCell align="right" sx={{color:'#00b300'}}>{row.Price}$</TableCell>
-              <TableCell align="right" sx={{color:'#e51b23', fontWeight:'bold'}}>{row.Discount}$</TableCell>
-              <TableCell align="right">{row.quantity}x</TableCell>
-              <TableCell align="right" ><DeleteIcon sx={{cursor:'pointer'}} /></TableCell>
-              <TableCell align="right" ><SyncAltRoundedIcon sx={{cursor:'pointer'}} /></TableCell>
-            </TableRow>
+              <StyledTableCell  component="th" scope="row" sx={{fontWeight: 'bold'}}>{row.id + index + 1}</StyledTableCell>
+              <StyledTableCell  component="th" scope="row"><Link to="/product/:productId" style={{ textDecoration: 'underline', color: '#000', fontWeight: 'bolder' }}>{row.name}</Link></StyledTableCell>
+              <StyledTableCell  align="right" sx={{fontWeight: "800"}}>{row.type}</StyledTableCell>
+              <StyledTableCell  align="right" style={row.Gender === 'M' ? { color: '#3498db', fontWeight: 'bold' } :{ color: '#e91e63', fontWeight: 'bold' } }>{row.Gender}</StyledTableCell>
+              <StyledTableCell  align="right" sx={{fontWeight: "800"}}>{row.size}</StyledTableCell>
+              <StyledTableCell  align="right" style={row.color === 'purple' ? { color: 'purple',textTransform: 'uppercase', fontWeight: 600 } : row.color === 'blue' ? { color: 'blue',textTransform: 'uppercase', fontWeight: 600 } : row.color === 'green' ? { color: 'green', textTransform: 'uppercase', fontWeight: 600 } : { color: 'black' }}>{row.color}</StyledTableCell>
+              <StyledTableCell  align="right" sx={{color:'#00b300', fontWeight: "800"}}>{row.Price}$</StyledTableCell>
+              <StyledTableCell  align="right" sx={{color:'#e51b23', fontWeight:'bold'}}>{row.Discount}$</StyledTableCell>
+              <StyledTableCell  align="right" sx={{fontWeight: "800"}}>{row.quantity}x</StyledTableCell>
+              <StyledTableCell  align="right" ><DeleteIcon sx={{cursor:'pointer'}} /></StyledTableCell>
+              <StyledTableCell  align="right" ><SyncAltRoundedIcon sx={{cursor:'pointer'}} /></StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>

@@ -39,6 +39,8 @@ display: none;
     align-items: center !important;
 }
 
+
+
 @media (max-width: 1105px){
     .featured{
         flex-direction:column;
