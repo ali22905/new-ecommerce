@@ -8,6 +8,32 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { tableCellClasses } from '@mui/material/TableCell';
+import { styled } from '@mui/material/styles';
+
+
+
+
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+  [`&.${tableCellClasses.head}`]: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  [`&.${tableCellClasses.body}`]: {
+    fontSize: 14,
+  },
+}));
+
+const StyledTableRow = styled(TableRow)(({ theme }) => ({
+  '&:nth-of-type(odd)': {
+    backgroundColor: theme.palette.action.hover,
+  },
+  // hide last border
+  '&:last-child td, &:last-child th': {
+    border: 0,
+  },
+}));
+
 
 
 function createData(id, firstName, lastName, phone, email, address, Admin, ) {
@@ -30,41 +56,41 @@ const rows = [
 
 
 
-const ProductList = () => {
+const UserList = () => {
   return (
     <div className="product-list-container">
-    <div className='deleteAllDiv'><Button variant="contained">Delete All &nbsp; <DeleteIcon fontSize='small' sx={{color:'#fff'}} /></Button></div>
+    <div className='deleteAllDiv'><Button variant="contained" sx={{backgroundColor: '#000 ', '&:hover': {backgroundColor: "rgba(0, 0, 0, 0.8) "}}}>Delete All &nbsp; <DeleteIcon fontSize='small' sx={{color:'#fff'}} /></Button></div>
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
-          <TableRow>
-            <TableCell sx={{fontWeight: 'bold'}} align='left'>id</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">firstName</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">lastName</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">phone</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">email</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">address</TableCell>
-            <TableCell sx={{fontWeight: 'bold'}} align="right">Admin</TableCell>
-            <TableCell align="right"></TableCell>
-          </TableRow>
+          <StyledTableRow>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align='left'>id</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">firstName</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">lastName</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">phone</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">email</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">address</StyledTableCell>
+            <StyledTableCell sx={{fontWeight: 'bold'}} align="right">Admin</StyledTableCell>
+            <StyledTableCell align="right"></StyledTableCell>
+          </StyledTableRow>
         </TableHead>
         <TableBody>
           {rows.map((row, index) => (
-            <TableRow
+            <StyledTableRow
               key={row.firstName}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row" sx={{fontWeight: 'bold'}}>
                 {row.id + index + 1}
               </TableCell>
-              <TableCell component="th" align="right" scope="row" sx={{fontWeight:'bold'}}>  {row.firstName}</TableCell>
-              <TableCell align="right" sx={{fontWeight:'bold'}}>{row.lastName}</TableCell>
-              <TableCell align="right">{row.phone}</TableCell>
-              <TableCell align="right" sx={{ fontWeight:'bold'}}>{row.email}</TableCell>
-              <TableCell align="right" >{row.address}</TableCell>
-              <TableCell align="right" style={{color: row.Admin === 'Yes' ? '#00b300' : row.Admin === 'No' ? '#e74c3c' : 'inherit', fontWeight:'bold'}}>{row.Admin}</TableCell>
-              <TableCell align="right" ><DeleteIcon sx={{cursor:'pointer'}} /></TableCell>
-            </TableRow>
+              <StyledTableCell component="th" align="right" scope="row" sx={{fontWeight:'bold'}}>  {row.firstName}</StyledTableCell>
+              <StyledTableCell align="right" sx={{fontWeight:'bold'}}>{row.lastName}</StyledTableCell>
+              <StyledTableCell align="right">{row.phone}</StyledTableCell>
+              <StyledTableCell align="right" sx={{ fontWeight:'bold'}}>{row.email}</StyledTableCell>
+              <StyledTableCell align="right" >{row.address}</StyledTableCell>
+              <StyledTableCell align="right" style={{color: row.Admin === 'Yes' ? '#00b300' : row.Admin === 'No' ? '#e74c3c' : 'inherit', fontWeight:'bold'}}>{row.Admin}</StyledTableCell>
+              <StyledTableCell align="right" ><DeleteIcon sx={{cursor:'pointer'}} /></StyledTableCell>
+            </StyledTableRow>
           ))}
         </TableBody>
       </Table>
@@ -73,6 +99,19 @@ const ProductList = () => {
   );
 }
 
-export default ProductList;
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default UserList;
 
 
