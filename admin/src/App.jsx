@@ -34,6 +34,7 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import  Update  from "./pages/update/Update";
 
 const drawerWidth = 240;
 
@@ -50,7 +51,7 @@ function App(props) {
 
   const drawer = (
     <div>
-      <Toolbar />
+      <Toolbar sx={{backgroundColor: "rgb(251, 251, 255)"}} />
       <Divider />
       <List >
       <Sidebar />
@@ -139,6 +140,7 @@ open
           <Route path="/products" element={<ProductList />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/newproduct" element={<NewProduct />} />
+          <Route path="/update" element={<Update />} />
         </Routes>
   </Box>
 </Box>

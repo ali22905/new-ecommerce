@@ -14,6 +14,7 @@ import ProductList from "./pages/productList/ProductList";
 import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import "./App.css";
+import  Update from "./pages/update/Update";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/products" element={<ProductList />} />
           <Route path="/product/:productId" element={<Product />} />
           <Route path="/newproduct" element={<NewProduct />} />
+          <Route path="/update" element={<Update />} />
         </Routes>
       </div>
     </div>
