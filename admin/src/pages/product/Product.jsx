@@ -69,6 +69,10 @@ export default function Product() {
               <span className="productInfoKey">views:</span>
               <span className="productInfoValue">927</span>
             </div>
+            <div className="productInfoItem">
+              <span className="productInfoKey">description:</span>
+              <span className="productInfoValue">aaaaaaa</span>
+            </div>
           </div>
         </div>
       </div>

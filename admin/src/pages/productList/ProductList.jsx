@@ -106,7 +106,7 @@ const ProductList = () => {
               <StyledTableCell  align="right" sx={{color:'#e51b23', fontWeight:'bold'}}>{row.Discount}$</StyledTableCell>
               <StyledTableCell  align="right" sx={{fontWeight: "800"}}>{row.sold}</StyledTableCell>
               <StyledTableCell  align="right" sx={{fontWeight: "800"}}>{row.orders}</StyledTableCell>
-              <StyledTableCell align="right" style={{color: row.stock === 'Yes' ? '#00b300' : row.stock === 'No' ? '#e74c3c' : 'inherit', fontWeight:'bold'}}>{row.stock}</StyledTableCell>
+              <StyledTableCell  align="right" style={{color: row.stock === 'Yes' ? '#00b300' : row.stock === 'No' ? '#e74c3c' : 'inherit', fontWeight:'bold'}}>{row.stock}</StyledTableCell>
               <StyledTableCell  align="right" ><DeleteIcon sx={{cursor:'pointer'}} /></StyledTableCell>
               <StyledTableCell  align="right" ><Link to="/update"><SyncAltRoundedIcon sx={{cursor:'pointer', textDecoration:'none', color: '#000'}} /></Link></StyledTableCell>
             </StyledTableRow>
